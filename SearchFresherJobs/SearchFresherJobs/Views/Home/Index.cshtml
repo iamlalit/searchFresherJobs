@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div class="row">
+    <div class="fill-width-image">
+        <div class="center">
+            <div class="center-inner">
+                <h1>Lorem ipsum dolor sit amet.</h1>
+                <p>What could be better to help the community by making yourself useful? Are you looking for a volunteer? Do you want to work as a volunteer? Would you and your friends or colleagues to do something in the voluntary sector? We want to help the vrijwilligersvacaturebank.nl you like that as well. Our goal is to bring the supply and demand of the voluntary sector in the Netherlands together. </p>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="newSection container">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="well">
+                <h3>Bekijk vacatures voor:</h3>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <ul>
+                            <li data-ng-repeat="list in JobListUrls"><a href="list.href" data-ng-bind="list.title"></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6">
+                        <ul>
+                            <li data-ng-repeat="list in JobListUrls"><a href="list.href" data-ng-bind="list.title"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="well">
+                <h3>Bekijk vacatures voor:</h3>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ul>
+                            <li data-ng-repeat="list in JobListUrls"><a href="list.href" data-ng-bind="list.title"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</section>
