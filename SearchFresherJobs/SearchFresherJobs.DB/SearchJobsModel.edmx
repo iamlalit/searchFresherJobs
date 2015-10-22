@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SearchJobsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblJobs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="jobtitle" Type="nvarchar" MaxLength="4000" />
+          <Property Name="jobsummary" Type="nvarchar" MaxLength="4000" />
+          <Property Name="jobdescription" Type="nvarchar(max)" />
+          <Property Name="publisherjobid" Type="nvarchar" MaxLength="500" />
+          <Property Name="city" Type="nvarchar" MaxLength="2000" />
+          <Property Name="deeplink" Type="nvarchar" MaxLength="4000" />
+          <Property Name="organization" Type="nvarchar" MaxLength="4000" />
+          <Property Name="createddate" Type="datetime" />
+          <Property Name="updateddate" Type="datetime" />
+          <Property Name="isactive" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="SearchJobsModelStoreContainer">
+          <EntitySet Name="tblJobs" EntityType="Self.tblJobs" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SearchJobsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblJob">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="jobtitle" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="jobsummary" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="jobdescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="publisherjobid" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="deeplink" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="organization" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="createddate" Type="DateTime" Precision="3" />
+          <Property Name="updateddate" Type="DateTime" Precision="3" />
+          <Property Name="isactive" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="SearchJobsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblJobs" EntityType="Self.tblJob" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SearchJobsModelStoreContainer" CdmEntityContainer="SearchJobsEntities">
+          <EntitySetMapping Name="tblJobs">
+            <EntityTypeMapping TypeName="SearchJobsModel.tblJob">
+              <MappingFragment StoreEntitySet="tblJobs">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="jobtitle" ColumnName="jobtitle" />
+                <ScalarProperty Name="jobsummary" ColumnName="jobsummary" />
+                <ScalarProperty Name="jobdescription" ColumnName="jobdescription" />
+                <ScalarProperty Name="publisherjobid" ColumnName="publisherjobid" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="deeplink" ColumnName="deeplink" />
+                <ScalarProperty Name="organization" ColumnName="organization" />
+                <ScalarProperty Name="createddate" ColumnName="createddate" />
+                <ScalarProperty Name="updateddate" ColumnName="updateddate" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

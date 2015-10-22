@@ -5,6 +5,18 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchFresherJobs", "SearchFresherJobs\SearchFresherJobs.csproj", "{BE868A66-6BC7-46F4-BD03-8DB5D99E10B6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebAPI", "WebAPI", "{38655BE0-2FF9-40CF-89C9-6C1F08353EDA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccessLayer", "DataAccessLayer", "{D774AB1B-168D-4899-9B45-E1DD76E18553}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchFresherJobs.DB", "SearchFresherJobs.DB\SearchFresherJobs.DB.csproj", "{86900B62-3B13-4F72-BB80-F34116D2BBC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchFresherJobs.RepositoryClasses", "SearchFresherJobs.RepositoryClasses\SearchFresherJobs.RepositoryClasses.csproj", "{9A73D55B-903E-41BF-B597-16559D2C7B3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchFresherJobs.RepositoryInterfaces", "SearchFresherJobs.RepositoryInterfaces\SearchFresherJobs.RepositoryInterfaces.csproj", "{93A85B80-95F8-455F-B699-604304BAF221}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchFresherJobsAPI", "SearchFresherJobsAPI\SearchFresherJobsAPI.csproj", "{0DE97D0A-6611-4BD3-8068-136B4291D4E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,8 +27,30 @@ Global
 		{BE868A66-6BC7-46F4-BD03-8DB5D99E10B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE868A66-6BC7-46F4-BD03-8DB5D99E10B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE868A66-6BC7-46F4-BD03-8DB5D99E10B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86900B62-3B13-4F72-BB80-F34116D2BBC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86900B62-3B13-4F72-BB80-F34116D2BBC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86900B62-3B13-4F72-BB80-F34116D2BBC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86900B62-3B13-4F72-BB80-F34116D2BBC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A73D55B-903E-41BF-B597-16559D2C7B3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A73D55B-903E-41BF-B597-16559D2C7B3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A73D55B-903E-41BF-B597-16559D2C7B3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A73D55B-903E-41BF-B597-16559D2C7B3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93A85B80-95F8-455F-B699-604304BAF221}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93A85B80-95F8-455F-B699-604304BAF221}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93A85B80-95F8-455F-B699-604304BAF221}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93A85B80-95F8-455F-B699-604304BAF221}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DE97D0A-6611-4BD3-8068-136B4291D4E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DE97D0A-6611-4BD3-8068-136B4291D4E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DE97D0A-6611-4BD3-8068-136B4291D4E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DE97D0A-6611-4BD3-8068-136B4291D4E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0DE97D0A-6611-4BD3-8068-136B4291D4E9} = {38655BE0-2FF9-40CF-89C9-6C1F08353EDA}
+		{86900B62-3B13-4F72-BB80-F34116D2BBC6} = {D774AB1B-168D-4899-9B45-E1DD76E18553}
+		{9A73D55B-903E-41BF-B597-16559D2C7B3C} = {D774AB1B-168D-4899-9B45-E1DD76E18553}
+		{93A85B80-95F8-455F-B699-604304BAF221} = {D774AB1B-168D-4899-9B45-E1DD76E18553}
 	EndGlobalSection
 EndGlobal
