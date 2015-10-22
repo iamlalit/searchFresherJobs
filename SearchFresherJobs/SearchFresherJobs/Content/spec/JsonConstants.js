@@ -1,0 +1,1 @@
+﻿var searchApiUrl = 'http://localhost:51610/api/SearchAPI/'

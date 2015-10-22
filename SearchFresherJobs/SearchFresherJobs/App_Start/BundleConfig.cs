@@ -34,6 +34,7 @@ namespace SearchFresherJobs
                       "~/Content/font-awesome.css"));
 
             bundles.Add(new ScriptBundle("~/Scripts/Custom").Include(
+                      "~/Content/spec/JsonConstants.js",
                       "~/Scripts/searchFreshers/app.js"
                 ));
         }

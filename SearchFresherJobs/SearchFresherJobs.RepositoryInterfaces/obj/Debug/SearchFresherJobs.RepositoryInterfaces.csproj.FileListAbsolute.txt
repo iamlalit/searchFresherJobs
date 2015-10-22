@@ -1,0 +1,9 @@
+C:\Projects\NewFolder3\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.RepositoryInterfaces\bin\Debug\SearchFresherJobs.RepositoryInterfaces.dll
+C:\Projects\NewFolder3\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.RepositoryInterfaces\bin\Debug\SearchFresherJobs.RepositoryInterfaces.pdb
+C:\Projects\NewFolder3\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.RepositoryInterfaces\bin\Debug\SearchFresherJobs.DB.dll
+C:\Projects\NewFolder3\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.RepositoryInterfaces\bin\Debug\EntityFramework.dll
+C:\Projects\NewFolder3\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.RepositoryInterfaces\bin\Debug\SearchFresherJobs.DB.pdb
+C:\Projects\NewFolder3\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.RepositoryInterfaces\bin\Debug\EntityFramework.xml
+C:\Projects\NewFolder3\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.RepositoryInterfaces\obj\Debug\SearchFresherJobs.RepositoryInterfaces.csprojResolveAssemblyReference.cache
+C:\Projects\NewFolder3\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.RepositoryInterfaces\obj\Debug\SearchFresherJobs.RepositoryInterfaces.dll
+C:\Projects\NewFolder3\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.RepositoryInterfaces\obj\Debug\SearchFresherJobs.RepositoryInterfaces.pdb

@@ -20,7 +20,9 @@ namespace SearchFresherJobs.RepositoryClasses
 
         public List<SearchJobDetail> GetDataForSearch(string keyword, string location)
         {
-            // return _DBContext.Set<tblJob>().Where(x => (x.jobtitle.Contains(keyword) || x.jobdescription.Contains(keyword) || x.jobsummary.Contains(keyword)) && (x.city.Contains(location) || x.jobdescription.Contains(location)) && x.isactive == true).ToList();
+            location = location == null ? String.Empty : location;
+            keyword = keyword == null ? String.Empty : keyword;
+
             return (from jobTable in _DBContext.Set<tblJob>()
                     where (jobTable.city.Contains(keyword) || jobTable.jobdescription.Contains(keyword) || jobTable.jobsummary.Contains(keyword))
                             && (jobTable.city.Contains(location) || jobTable.jobdescription.Contains(location))

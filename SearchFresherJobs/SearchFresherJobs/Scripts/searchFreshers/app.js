@@ -1,6 +1,14 @@
 ﻿var app = angular.module('SearchFresherJobsApp', []);
 
-app.controller('homeCtrl', function ($scope) {
+app.controller('homeCtrl', function ($scope, $http) {
+    $scope.keyword = "";
+    $scope.location = "";
+
+    $scope.searchForJobs = function () {
+        $http.get(searchApiUrl + "GetJobDataForSearch?keyword=" + $scope.keyword + "&location=" + $scope.location).then(function (result) {
+            console.log(result.data);
+        });
+    }
 
     $scope.JobListUrls = [
         {

@@ -1,0 +1,9 @@
+C:\Projects\NewFolder3\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.DB\bin\Debug\SearchFresherJobs.DB.dll.config
+C:\Projects\NewFolder3\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.DB\bin\Debug\SearchFresherJobs.DB.dll
+C:\Projects\NewFolder3\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.DB\bin\Debug\SearchFresherJobs.DB.pdb
+C:\Projects\NewFolder3\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.DB\bin\Debug\EntityFramework.dll
+C:\Projects\NewFolder3\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.DB\bin\Debug\EntityFramework.SqlServer.dll
+C:\Projects\NewFolder3\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.DB\bin\Debug\EntityFramework.xml
+C:\Projects\NewFolder3\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.DB\bin\Debug\EntityFramework.SqlServer.xml
+C:\Projects\NewFolder3\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.DB\obj\Debug\SearchFresherJobs.DB.dll
+C:\Projects\NewFolder3\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.DB\obj\Debug\SearchFresherJobs.DB.pdb
