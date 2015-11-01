@@ -1,0 +1,9 @@
+F:\sandeep\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.DB\bin\Release\SearchFresherJobs.DB.dll.config
+F:\sandeep\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.DB\bin\Release\SearchFresherJobs.DB.dll
+F:\sandeep\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.DB\bin\Release\SearchFresherJobs.DB.pdb
+F:\sandeep\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.DB\bin\Release\EntityFramework.dll
+F:\sandeep\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.DB\bin\Release\EntityFramework.SqlServer.dll
+F:\sandeep\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.DB\bin\Release\EntityFramework.xml
+F:\sandeep\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.DB\bin\Release\EntityFramework.SqlServer.xml
+F:\sandeep\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.DB\obj\Release\SearchFresherJobs.DB.dll
+F:\sandeep\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.DB\obj\Release\SearchFresherJobs.DB.pdb

@@ -1,0 +1,14 @@
+F:\sandeep\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.RepositoryClasses\bin\Release\SearchFresherJobs.RepositoryClasses.dll.config
+F:\sandeep\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.RepositoryClasses\bin\Release\SearchFresherJobs.RepositoryClasses.dll
+F:\sandeep\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.RepositoryClasses\bin\Release\SearchFresherJobs.RepositoryClasses.pdb
+F:\sandeep\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.RepositoryClasses\bin\Release\EntityFramework.dll
+F:\sandeep\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.RepositoryClasses\bin\Release\EntityFramework.SqlServer.dll
+F:\sandeep\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.RepositoryClasses\bin\Release\SearchFresherJobs.DB.dll
+F:\sandeep\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.RepositoryClasses\bin\Release\SearchFresherJobs.RepositoryInterfaces.dll
+F:\sandeep\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.RepositoryClasses\bin\Release\SearchFresherJobs.DB.pdb
+F:\sandeep\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.RepositoryClasses\bin\Release\SearchFresherJobs.RepositoryInterfaces.pdb
+F:\sandeep\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.RepositoryClasses\bin\Release\EntityFramework.xml
+F:\sandeep\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.RepositoryClasses\bin\Release\EntityFramework.SqlServer.xml
+F:\sandeep\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.RepositoryClasses\obj\Release\SearchFresherJobs.RepositoryClasses.csprojResolveAssemblyReference.cache
+F:\sandeep\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.RepositoryClasses\obj\Release\SearchFresherJobs.RepositoryClasses.dll
+F:\sandeep\searchFresherJobs\SearchFresherJobs\SearchFresherJobs.RepositoryClasses\obj\Release\SearchFresherJobs.RepositoryClasses.pdb

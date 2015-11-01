@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SearchJobsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblJob">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="jobtitle" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="jobsummary" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="jobdescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="publisherjobid" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="city" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="deeplink" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="organization" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="createddate" Type="DateTime" Precision="3" />
+    <Property Name="updateddate" Type="DateTime" Precision="3" />
+    <Property Name="isactive" Type="Boolean" />
+  </EntityType>
+  <EntityContainer Name="SearchJobsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblJobs" EntityType="Self.tblJob" />
+  </EntityContainer>
+</Schema>

@@ -1,4 +1,5 @@
 ﻿using SearchFresherJobs.DB.DomainClasses;
+using SearchFresherJobs.RepositoryClasses;
 using SearchFresherJobs.RepositoryInterfaces;
 using System;
 using System.Collections.Generic;
@@ -14,10 +15,16 @@ namespace SearchFresherJobsAPI.Controllers
     {
         ISearchJobsRepository _SearchJobsRepository;
 
-        public SearchAPIController(ISearchJobsRepository searchJobsRepository)
+        //public SearchAPIController(ISearchJobsRepository searchJobsRepository)
+        //{
+        //    _SearchJobsRepository = searchJobsRepository;
+        //}
+
+        public SearchAPIController()
         {
-            _SearchJobsRepository = searchJobsRepository;
+            _SearchJobsRepository = new SearchJobsRepository();
         }
+
 
         [HttpGet]
         public HttpResponseMessage GetJobDataForSearch(string keyword, string location)

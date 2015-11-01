@@ -26,5 +26,6 @@ namespace SearchFresherJobs.Controllers
 
             return View();
         }
+
     }
 }

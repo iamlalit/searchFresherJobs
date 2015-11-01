@@ -18,6 +18,13 @@ namespace SearchFresherJobs.RepositoryClasses
             _DBContext = searchJobsEntities;
         }
 
+        public SearchJobsRepository()
+        {
+            _DBContext = new SearchJobsEntities();
+        }
+
+
+
         public List<SearchJobDetail> GetDataForSearch(string keyword, string location)
         {
             location = location == null ? String.Empty : location;

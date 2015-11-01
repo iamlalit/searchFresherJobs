@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Fresher job search results";
+}
+
+<div class="container">
+    <div class="row space-top-size2x">
+        
+    </div>
+    <div class="row space-top-size2x">
+        <div class="col-sm-2">
+            <h3></h3>
+        </div>
+        <div class="col-sm-7">
+            <div>
+                <label data-ng-bind="jobsList.length"></label> <label> Jobs</label>
+            </div>
+            <ul class="searchList space-top-size2x" data-ng-if="jobsList.length != 0">
+                <li ng-repeat="data in jobsList">
+                    <label><a href="{{data.deeplink}}" target="_blank">{{ data.title | limitTo : 60}}</a><span data-ng-if="data.title.length >= 60">...</span></a></label>
+                    <a class="searchLink" href="{{data.deeplink}}" target="_blank">{{ data.deeplink | limitTo : 100}}<span data-ng-if="data.deeplink.length >= 100">...</span></a>
+                    <p>{{ data.summary | limitTo : 200}} <a data-ng-if="data.summary.length >= 200" href="{{data.deeplink}}" target="_blank">more...</a></p>
+                </li>
+            </ul>
+            
+            <div class="space-top-size3x" data-ng-if="jobsList.length == 0">
+                <p>
+                    Sorry, the search <span data-ng-bind="keyword"></span> jobs in <span data-ng-bind="location"></span> did not match any jobs
+                </p>
+                <p>Search suggestions:</p>
+                <ul>
+                    <li>- Try more general keywords</li>
+                    <li>- Check your spelling</li>
+                    <li>- Replace abbreviations with the entire word</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <label>My recent searches</label>
+            <ul>
+                <li data-ng-repeat="recent in recentSearches track by $index"><a href="{{recent.URL}}" data-ng-bind="recent.searched" target="_blank"></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+

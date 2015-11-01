@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SearchJobsModelStoreContainer" CdmEntityContainer="SearchJobsEntities">
+    <EntitySetMapping Name="tblJobs">
+      <EntityTypeMapping TypeName="SearchJobsModel.tblJob">
+        <MappingFragment StoreEntitySet="tblJobs">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="jobtitle" ColumnName="jobtitle" />
+          <ScalarProperty Name="jobsummary" ColumnName="jobsummary" />
+          <ScalarProperty Name="jobdescription" ColumnName="jobdescription" />
+          <ScalarProperty Name="publisherjobid" ColumnName="publisherjobid" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="deeplink" ColumnName="deeplink" />
+          <ScalarProperty Name="organization" ColumnName="organization" />
+          <ScalarProperty Name="createddate" ColumnName="createddate" />
+          <ScalarProperty Name="updateddate" ColumnName="updateddate" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
