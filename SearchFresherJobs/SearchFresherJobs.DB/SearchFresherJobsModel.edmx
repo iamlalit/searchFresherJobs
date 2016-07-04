@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SearchFresherJobsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblFresher">
+          <Key>
+            <PropertyRef Name="FresherId" />
+          </Key>
+          <Property Name="FresherId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="Counrty" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="DeleteStatus" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblJobs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="jobtitle" Type="nvarchar" MaxLength="4000" />
+          <Property Name="jobsummary" Type="nvarchar" MaxLength="4000" />
+          <Property Name="jobdescription" Type="nvarchar(max)" />
+          <Property Name="publisherjobid" Type="nvarchar" MaxLength="500" />
+          <Property Name="city" Type="nvarchar" MaxLength="2000" />
+          <Property Name="deeplink" Type="nvarchar" MaxLength="4000" />
+          <Property Name="organization" Type="nvarchar" MaxLength="4000" />
+          <Property Name="createddate" Type="datetime" />
+          <Property Name="updateddate" Type="datetime" />
+          <Property Name="isactive" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblOrganization">
+          <Key>
+            <PropertyRef Name="OrganizationId" />
+          </Key>
+          <Property Name="OrganizationId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="Counrty" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="DeleteStatus" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="UserTypeId" Type="smallint" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="DeleteStatus" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tblFresher_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblFresher" Type="Self.tblFresher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblFresher">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrganization_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblOrganization" Type="Self.tblOrganization" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblOrganization">
+              <PropertyRef Name="OrganizationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SearchFresherJobsModelStoreContainer">
+          <EntitySet Name="tblFresher" EntityType="Self.tblFresher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblJobs" EntityType="Self.tblJobs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOrganization" EntityType="Self.tblOrganization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tblFresher_tblUser" Association="Self.FK_tblFresher_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblFresher" EntitySet="tblFresher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrganization_tblUser" Association="Self.FK_tblOrganization_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblOrganization" EntitySet="tblOrganization" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SearchFresherJobsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblFresher">
+          <Key>
+            <PropertyRef Name="FresherId" />
+          </Key>
+          <Property Name="FresherId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Counrty" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeleteStatus" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_tblFresher_tblUser" FromRole="tblFresher" ToRole="tblUser" />
+        </EntityType>
+        <EntityType Name="tblJob">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="jobtitle" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="jobsummary" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="jobdescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="publisherjobid" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="deeplink" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="organization" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="createddate" Type="DateTime" Precision="3" />
+          <Property Name="updateddate" Type="DateTime" Precision="3" />
+          <Property Name="isactive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblOrganization">
+          <Key>
+            <PropertyRef Name="OrganizationId" />
+          </Key>
+          <Property Name="OrganizationId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Counrty" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeleteStatus" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblUser" Relationship="Self.FK_tblOrganization_tblUser" FromRole="tblOrganization" ToRole="tblUser" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserTypeId" Type="Int16" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeleteStatus" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblFreshers" Relationship="Self.FK_tblFresher_tblUser" FromRole="tblUser" ToRole="tblFresher" />
+          <NavigationProperty Name="tblOrganization" Relationship="Self.FK_tblOrganization_tblUser" FromRole="tblUser" ToRole="tblOrganization" />
+        </EntityType>
+        <Association Name="FK_tblFresher_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblFresher" Type="Self.tblFresher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblFresher">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrganization_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblOrganization" Type="Self.tblOrganization" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblOrganization">
+              <PropertyRef Name="OrganizationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SearchFresherJobsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblFreshers" EntityType="Self.tblFresher" />
+          <EntitySet Name="tblJobs" EntityType="Self.tblJob" />
+          <EntitySet Name="tblOrganizations" EntityType="Self.tblOrganization" />
+          <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+          <AssociationSet Name="FK_tblFresher_tblUser" Association="Self.FK_tblFresher_tblUser">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblFresher" EntitySet="tblFreshers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrganization_tblUser" Association="Self.FK_tblOrganization_tblUser">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblOrganization" EntitySet="tblOrganizations" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SearchFresherJobsModelStoreContainer" CdmEntityContainer="SearchFresherJobsEntities">
+          <EntitySetMapping Name="tblFreshers">
+            <EntityTypeMapping TypeName="SearchFresherJobsModel.tblFresher">
+              <MappingFragment StoreEntitySet="tblFresher">
+                <ScalarProperty Name="FresherId" ColumnName="FresherId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Counrty" ColumnName="Counrty" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="DeleteStatus" ColumnName="DeleteStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblJobs">
+            <EntityTypeMapping TypeName="SearchFresherJobsModel.tblJob">
+              <MappingFragment StoreEntitySet="tblJobs">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="jobtitle" ColumnName="jobtitle" />
+                <ScalarProperty Name="jobsummary" ColumnName="jobsummary" />
+                <ScalarProperty Name="jobdescription" ColumnName="jobdescription" />
+                <ScalarProperty Name="publisherjobid" ColumnName="publisherjobid" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="deeplink" ColumnName="deeplink" />
+                <ScalarProperty Name="organization" ColumnName="organization" />
+                <ScalarProperty Name="createddate" ColumnName="createddate" />
+                <ScalarProperty Name="updateddate" ColumnName="updateddate" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOrganizations">
+            <EntityTypeMapping TypeName="SearchFresherJobsModel.tblOrganization">
+              <MappingFragment StoreEntitySet="tblOrganization">
+                <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Counrty" ColumnName="Counrty" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="DeleteStatus" ColumnName="DeleteStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="SearchFresherJobsModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="DeleteStatus" ColumnName="DeleteStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

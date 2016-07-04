@@ -13,10 +13,10 @@ namespace SearchFresherJobs.DB
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SearchJobsEntities : DbContext
+    public partial class SearchFresherJobsEntities : DbContext
     {
-        public SearchJobsEntities()
-            : base("name=SearchJobsEntities")
+        public SearchFresherJobsEntities()
+            : base("name=SearchFresherJobsEntities")
         {
         }
     
@@ -25,6 +25,9 @@ namespace SearchFresherJobs.DB
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<tblFresher> tblFreshers { get; set; }
         public virtual DbSet<tblJob> tblJobs { get; set; }
+        public virtual DbSet<tblOrganization> tblOrganizations { get; set; }
+        public virtual DbSet<tblUser> tblUsers { get; set; }
     }
 }

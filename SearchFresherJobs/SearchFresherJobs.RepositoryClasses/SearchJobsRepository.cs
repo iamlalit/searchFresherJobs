@@ -13,14 +13,14 @@ namespace SearchFresherJobs.RepositoryClasses
     public class SearchJobsRepository : ISearchJobsRepository
     {
         DbContext _DBContext;
-        public SearchJobsRepository(SearchJobsEntities searchJobsEntities)
+        public SearchJobsRepository(SearchFresherJobsEntities searchJobsEntities)
         {
             _DBContext = searchJobsEntities;
         }
 
         public SearchJobsRepository()
         {
-            _DBContext = new SearchJobsEntities();
+            _DBContext = new SearchFresherJobsEntities();
         }
 
 
