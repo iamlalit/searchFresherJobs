@@ -1,41 +1,31 @@
-﻿@model SearchFresherJobs.Models.RegisterViewModel
-@{
-    ViewBag.Title = "Register";
+﻿@section Scripts {
+    @Scripts.Render("~/bundles/RegisterPage")
 }
-
-<h2>@ViewBag.Title.</h2>
-
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary()
-    <div class="form-group">
-        @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-        </div>
+<div>
+    First Name:
+    <div>
+        <input ng-model="firstName" />
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
+    Last Name:
+    <div>
+        <input ng-model="lastName" />
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
+    Email:
+    <div>
+        <input ng-model="email" />
+    </div> 
+    Password: 
+    <div>
+        <input type="password" ng-model="password" />
     </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
-        </div>
+    You're registering as:
+    <div>
+        <select ng-model="userType">
+            <option value="1" selected>Fresher</option>
+            <option value="2">Organization</option>
+        </select>
     </div>
-}
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    <div>
+        <button ng-click="registerUser()">Register</button>
+    </div>
+</div>

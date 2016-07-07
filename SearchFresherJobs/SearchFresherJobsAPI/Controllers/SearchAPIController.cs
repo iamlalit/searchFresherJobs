@@ -15,16 +15,10 @@ namespace SearchFresherJobsAPI.Controllers
     {
         ISearchJobsRepository _SearchJobsRepository;
 
-        //public SearchAPIController(ISearchJobsRepository searchJobsRepository)
-        //{
-        //    _SearchJobsRepository = searchJobsRepository;
-        //}
-
-        public SearchAPIController()
+        public SearchAPIController(ISearchJobsRepository searchJobsRepository)
         {
-            _SearchJobsRepository = new SearchJobsRepository();
+            _SearchJobsRepository = searchJobsRepository;
         }
-
 
         [HttpGet]
         public HttpResponseMessage GetJobDataForSearch(string keyword, string location)

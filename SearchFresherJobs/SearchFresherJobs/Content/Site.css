@@ -237,3 +237,9 @@ footer{
          padding-right: 15px; 
     }
 }
+.login-action {
+    text-align: right;
+}
+.login-action a {
+    margin-left: 10px;
+}

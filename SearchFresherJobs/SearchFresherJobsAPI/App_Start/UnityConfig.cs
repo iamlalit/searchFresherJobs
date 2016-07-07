@@ -1,46 +1,25 @@
-using System;
 using Microsoft.Practices.Unity;
-using Microsoft.Practices.Unity.Configuration;
 using SearchFresherJobs.RepositoryClasses;
 using SearchFresherJobs.RepositoryInterfaces;
+using System.Web.Http;
+using Unity.WebApi;
 
-namespace SearchFresherJobsAPI.App_Start
+namespace SearchFresherJobsAPI
 {
-    /// <summary>
-    /// Specifies the Unity configuration for the main container.
-    /// </summary>
-    public class UnityConfig
+    public static class UnityConfig
     {
-        #region Unity Container
-        private static Lazy<IUnityContainer> container = new Lazy<IUnityContainer>(() =>
+        public static void RegisterComponents()
         {
-            var container = new UnityContainer();
-            RegisterTypes(container);
-            return container;
-        });
+			var container = new UnityContainer();
 
-        /// <summary>
-        /// Gets the configured Unity container.
-        /// </summary>
-        public static IUnityContainer GetConfiguredContainer()
-        {
-            return container.Value;
-        }
-        #endregion
+            // register all your components with the container here
+            // it is NOT necessary to register your controllers
 
-        /// <summary>Registers the type mappings with the Unity container.</summary>
-        /// <param name="container">The unity container to configure.</param>
-        /// <remarks>There is no need to register concrete types such as controllers or API controllers (unless you want to 
-        /// change the defaults), as Unity allows resolving a concrete type even if it was not previously registered.</remarks>
-        public static void RegisterTypes(IUnityContainer container)
-        {
+            // e.g. container.RegisterType<ITestService, TestService>();
             container.RegisterType<IAccountRepository, AccountRepository>();
             container.RegisterType<ISearchJobsRepository, SearchJobsRepository>();
-        }
 
-        internal static void RegisterComponents()
-        {
-            throw new NotImplementedException();
+            GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }
     }
 }

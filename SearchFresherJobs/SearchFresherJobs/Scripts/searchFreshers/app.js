@@ -1,7 +1,8 @@
-﻿var app = angular.module('SearchFresherJobsApp', []);
+﻿
 
 app.controller('homeCtrl', ['$scope', '$http', function ($scope, $http) {
     $scope.jobsList = [];
+    $scope.showHeader = true;
 
     //this is to swicth between the two functions based on the page is active
     var buttonElement = angular.element(document.querySelector('#btnSave'));
@@ -33,6 +34,7 @@ app.controller('homeCtrl', ['$scope', '$http', function ($scope, $http) {
             $scope.jobsList = result.data;
             $('.body-content').removeClass('hidden');
         });
+        $http.get("http://localhost:51610/api/AccountAPI/Login?email=abc@gmail.com&password=123456&userType=1");
         $scope.setRecentSearch($scope.keyword, $scope.location);
         $scope.recentSearches = [];
         if ($scope.searchString != null) {

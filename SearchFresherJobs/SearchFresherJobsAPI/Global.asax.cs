@@ -13,7 +13,7 @@ namespace SearchFresherJobsAPI
     {
         protected void Application_Start()
         {
-            //UnityConfig.RegisterComponents();
+            UnityConfig.RegisterComponents();
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
