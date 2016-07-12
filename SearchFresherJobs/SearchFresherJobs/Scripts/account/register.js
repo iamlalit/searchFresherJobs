@@ -1,13 +1,10 @@
 ﻿app.controller('homeCtrl', ['$scope', '$http', function ($scope, $http) {
-    $scope.name = 'Sparsh 2';
-
     $scope.registerUser = function () {
         var emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (!emailRegex.test($scope.email)) {
             alert("Invalid email address");
             return;
         }
-        if ()
         var url = apiEndpointUrl + 'AccountAPI/Register?email=' + $scope.email + '&password=' + $scope.password + '&firstName=' + $scope.firstName + '&lastName=' + $scope.lastname + '&userType=' + $scope.userType;
         $http.get(url).success(function () {
 
