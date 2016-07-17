@@ -29,5 +29,6 @@ namespace SearchFresherJobs.DB
         public virtual DbSet<tblJob> tblJobs { get; set; }
         public virtual DbSet<tblOrganization> tblOrganizations { get; set; }
         public virtual DbSet<tblUser> tblUsers { get; set; }
+        public virtual DbSet<tblFresherJob> tblFresherJobs { get; set; }
     }
 }

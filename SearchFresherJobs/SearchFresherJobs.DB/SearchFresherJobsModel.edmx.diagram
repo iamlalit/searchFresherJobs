@@ -11,6 +11,7 @@
         <EntityTypeShape EntityType="SearchFresherJobsModel.tblUser" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
         <AssociationConnector Association="SearchFresherJobsModel.FK_tblFresher_tblUser" ManuallyRouted="false" />
         <AssociationConnector Association="SearchFresherJobsModel.FK_tblOrganization_tblUser" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SearchFresherJobsModel.tblFresherJob" Width="1.5" PointX="5.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

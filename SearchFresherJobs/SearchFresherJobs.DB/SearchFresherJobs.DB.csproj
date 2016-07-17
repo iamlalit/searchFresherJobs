@@ -72,6 +72,9 @@
     <Compile Include="tblFresher.cs">
       <DependentUpon>SearchFresherJobsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="tblFresherJob.cs">
+      <DependentUpon>SearchFresherJobsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblJob.cs">
       <DependentUpon>SearchFresherJobsModel.tt</DependentUpon>
     </Compile>
