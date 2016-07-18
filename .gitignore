@@ -1,2 +1,13 @@
 SearchFresherJobs/packages/*
 SearchFresherJobs/SearchFresherJobsAPI/bin/
+/SearchFresherJobs/SearchFresherJobs/obj/Debug
+/SearchFresherJobs/SearchFresherJobs.DB/bin/Debug
+/SearchFresherJobs/SearchFresherJobs.DB/obj/Release
+/SearchFresherJobs/SearchFresherJobs.DB/obj/Debug
+/SearchFresherJobs/SearchFresherJobs.RepositoryClasses/obj/Debug
+/SearchFresherJobs/SearchFresherJobs.RepositoryClasses/bin/Debug
+/SearchFresherJobs/SearchFresherJobs.RepositoryInterfaces/obj/Debug
+/SearchFresherJobs/SearchFresherJobs.RepositoryInterfaces/bin/Debug
+/SearchFresherJobs/SearchFresherJobsAPI/obj/Debug
+/SearchFresherJobs/.vs
+*.log
