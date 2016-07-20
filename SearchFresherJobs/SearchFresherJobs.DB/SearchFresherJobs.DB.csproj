@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainClasses\FresherProfile.cs" />
     <Compile Include="DomainClasses\FresherJobModel.cs" />
     <Compile Include="DomainClasses\SearchJobDetail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,7 +88,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <EntityDeploy Include="SearchFresherJobsModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
