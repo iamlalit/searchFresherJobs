@@ -1,8 +1,13 @@
-﻿
-
-app.controller('homeCtrl', ['$scope', '$http', function ($scope, $http) {
+﻿app.controller('homeCtrl', ['$scope', '$http', function ($scope, $http) {
     $scope.jobsList = [];
     $scope.showHeader = true;
+    $scope.isCreateNewJob = false;
+    $scope.newJobDetails = {
+        title: '',
+        description: '',
+        salary: '',
+        location: ''
+    }
 
     //this is to swicth between the two functions based on the page is active
     var buttonElement = angular.element(document.querySelector('#btnSave'));
@@ -11,6 +16,8 @@ app.controller('homeCtrl', ['$scope', '$http', function ($scope, $http) {
     } else {
         buttonElement.attr('ng-click', "searchJobs()");
     }
+
+    $scope.publicUserProfileId = localStorage.getItem('PublicUserProfileId');
 
     //home page form to redirect
     $scope.redirectForm = function () {
@@ -24,6 +31,16 @@ app.controller('homeCtrl', ['$scope', '$http', function ($scope, $http) {
         return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     }
 
+    $scope.showCreateJob = function () {
+        $scope.isCreateNewJob = true;
+    }
+
+    $scope.createNewJob = function () {
+        var data = JSON.stringify({ PublicUserProfileId: $scope.publicUserProfileId, NewJobDetails : $scope.newJobDetails });
+        $http.post(apiEndpointUrl + 'JobsAPI/CreateNewJob', data).success(function () {
+            alert("Job created");
+        })
+    }
 
     $scope.searchString = localStorage.getItem('searchString');
     //search form to show data
@@ -86,8 +103,6 @@ app.controller('homeCtrl', ['$scope', '$http', function ($scope, $http) {
             //localStorage.removeItem('searchStringURL');
         }
     }
-
-    $scope.searchJobs();
 
     $scope.JobListUrls = [
         {

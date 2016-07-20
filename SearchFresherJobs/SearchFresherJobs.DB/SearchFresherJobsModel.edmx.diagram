@@ -12,6 +12,8 @@
         <AssociationConnector Association="SearchFresherJobsModel.FK_tblFresher_tblUser" ManuallyRouted="false" />
         <AssociationConnector Association="SearchFresherJobsModel.FK_tblOrganization_tblUser" ManuallyRouted="false" />
         <EntityTypeShape EntityType="SearchFresherJobsModel.tblFresherJob" Width="1.5" PointX="5.375" PointY="4.75" />
+        <AssociationConnector Association="SearchFresherJobsModel.FK_tblFresherJobs_tblUser" />
+        <AssociationConnector Association="SearchFresherJobsModel.FK_tblOrganization_tblUser1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

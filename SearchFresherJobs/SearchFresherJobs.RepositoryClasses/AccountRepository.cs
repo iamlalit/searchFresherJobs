@@ -26,7 +26,7 @@ namespace SearchFresherJobs.RepositoryClasses
         /// <param name="encryptedPassword"></param>
         /// <param name="email"></param>
         /// <param name="userType"></param>
-        public long CreateUser(string firstName, string lastName, string encryptedPassword, string email, short userType)
+        public long CreateUser(string firstName, string lastName, string encryptedPassword, string email, short userType, long publicUserIdPrefix)
         {
             DateTime curTime = DateTime.Now;
             tblUser userProfile = new tblUser();
@@ -41,7 +41,11 @@ namespace SearchFresherJobs.RepositoryClasses
             _DbContext.Entry(userProfile).State = EntityState.Added;
             _DbContext.SaveChanges();
 
-            return userProfile.UserId;
+            userProfile.PublicUserId = Convert.ToInt64(string.Format("{0}{1}", publicUserIdPrefix, userProfile.UserId));
+            _DbContext.Entry(userProfile).State = EntityState.Modified;
+            _DbContext.SaveChanges();
+
+            return userProfile.PublicUserId;
         }
 
         /// <summary>
@@ -53,6 +57,17 @@ namespace SearchFresherJobs.RepositoryClasses
         public tblUser GetUserDetails(string email, short userType)
         {
             tblUser userDetails = _DbContext.Set<tblUser>().FirstOrDefault(x => x.Email == email && x.UserTypeId == userType && x.DeleteStatus == false);
+            return userDetails;
+        }
+
+        /// <summary>
+        /// Gets user details by publicUserProfileId
+        /// </summary>
+        /// <param name="publicUserProfileId"></param>
+        /// <returns></returns>
+        public tblUser GetUserDetailsByPublicUserId(long publicUserProfileId)
+        {
+            tblUser userDetails = _DbContext.Set<tblUser>().FirstOrDefault(x => x.PublicUserId == publicUserProfileId && x.DeleteStatus == false);
             return userDetails;
         }
     }

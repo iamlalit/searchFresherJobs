@@ -48,9 +48,11 @@ namespace SearchFresherJobsAPI.Controllers
             try
             {
                 string encryptedPassword = GetEncryptedPassword(password);
-                long userId = _AccountRepository.CreateUser(firstName, lastName, encryptedPassword, email, userType);
+                Random rnd = new Random();
+                long publicUserIdPrefix = rnd.Next(100000, 1000000);
+                long publicUserId = _AccountRepository.CreateUser(firstName, lastName, encryptedPassword, email, userType, publicUserIdPrefix);
 
-                return this.Request.CreateResponse(HttpStatusCode.OK, new { UserProfileId = userId });
+                return this.Request.CreateResponse(HttpStatusCode.OK, new { PublicUserProfileId = publicUserId });
             }
             catch (Exception ex)
             {
@@ -77,7 +79,7 @@ namespace SearchFresherJobsAPI.Controllers
                     string decryptedPassword = DecryptPassword(userDetails.Password);
                     if (String.Equals(password, decryptedPassword))
                     {
-                        return this.Request.CreateResponse(HttpStatusCode.OK);
+                        return this.Request.CreateResponse(HttpStatusCode.OK, new { PublicUserProfileId = userDetails.PublicUserId });
                     }
                 }
                 return Request.CreateResponse(HttpStatusCode.Unauthorized, new { Message = "User login failed" });

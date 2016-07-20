@@ -25,9 +25,10 @@
           </Key>
           <Property Name="FresherJobId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" Nullable="false" />
           <Property Name="Salary" Type="nvarchar" MaxLength="100" />
           <Property Name="Location" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
           <Property Name="DeleteStatus" Type="bit" Nullable="false" />
@@ -72,6 +73,7 @@
           <Property Name="Email" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="1000" Nullable="false" />
           <Property Name="UserTypeId" Type="smallint" Nullable="false" />
+          <Property Name="PublicUserId" Type="bigint" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
           <Property Name="DeleteStatus" Type="bit" Nullable="false" />
@@ -88,15 +90,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblFresherJobs_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
+          <End Role="tblFresherJobs" Type="Self.tblFresherJobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblFresherJobs">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblOrganization_tblUser">
           <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
-          <End Role="tblOrganization" Type="Self.tblOrganization" Multiplicity="0..1" />
+          <End Role="tblOrganization" Type="Self.tblOrganization" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblUser">
               <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="tblOrganization">
-              <PropertyRef Name="OrganizationId" />
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -109,6 +123,10 @@
           <AssociationSet Name="FK_tblFresher_tblUser" Association="Self.FK_tblFresher_tblUser">
             <End Role="tblUser" EntitySet="tblUser" />
             <End Role="tblFresher" EntitySet="tblFresher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblFresherJobs_tblUser" Association="Self.FK_tblFresherJobs_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblFresherJobs" EntitySet="tblFresherJobs" />
           </AssociationSet>
           <AssociationSet Name="FK_tblOrganization_tblUser" Association="Self.FK_tblOrganization_tblUser">
             <End Role="tblUser" EntitySet="tblUser" />
@@ -180,6 +198,9 @@
           <Property Name="DeleteStatus" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="tblFreshers" Relationship="Self.FK_tblFresher_tblUser" FromRole="tblUser" ToRole="tblFresher" />
           <NavigationProperty Name="tblOrganization" Relationship="Self.FK_tblOrganization_tblUser" FromRole="tblUser" ToRole="tblOrganization" />
+          <NavigationProperty Name="tblFresherJobs" Relationship="SearchFresherJobsModel.FK_tblFresherJobs_tblUser" FromRole="tblUser" ToRole="tblFresherJob" />
+          <NavigationProperty Name="tblOrganizations" Relationship="SearchFresherJobsModel.FK_tblOrganization_tblUser1" FromRole="tblUser" ToRole="tblOrganization" />
+          <Property Name="PublicUserId" Type="Int64" Nullable="false" />
         </EntityType>
         <Association Name="FK_tblFresher_tblUser">
           <End Role="tblUser" Type="Self.tblUser" Multiplicity="1" />
@@ -219,6 +240,14 @@
             <End Role="tblOrganization" EntitySet="tblOrganizations" />
           </AssociationSet>
           <EntitySet Name="tblFresherJobs" EntityType="SearchFresherJobsModel.tblFresherJob" />
+          <AssociationSet Name="FK_tblFresherJobs_tblUser" Association="SearchFresherJobsModel.FK_tblFresherJobs_tblUser">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblFresherJob" EntitySet="tblFresherJobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrganization_tblUser1" Association="SearchFresherJobsModel.FK_tblOrganization_tblUser1">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblOrganization" EntitySet="tblOrganizations" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="tblFresherJob">
           <Key>
@@ -226,13 +255,39 @@
           </Key>
           <Property Name="FresherJobId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Salary" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Location" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DeleteStatus" Type="Boolean" Nullable="false" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="tblUser" Relationship="SearchFresherJobsModel.FK_tblFresherJobs_tblUser" FromRole="tblFresherJob" ToRole="tblUser" />
         </EntityType>
+        <Association Name="FK_tblFresherJobs_tblUser">
+          <End Type="SearchFresherJobsModel.tblUser" Role="tblUser" Multiplicity="1" />
+          <End Type="SearchFresherJobsModel.tblFresherJob" Role="tblFresherJob" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblFresherJob">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrganization_tblUser1">
+          <End Type="SearchFresherJobsModel.tblUser" Role="tblUser" Multiplicity="1" />
+          <End Type="SearchFresherJobsModel.tblOrganization" Role="tblOrganization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tblOrganization">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -289,6 +344,7 @@
           <EntitySetMapping Name="tblUsers">
             <EntityTypeMapping TypeName="SearchFresherJobsModel.tblUser">
               <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="PublicUserId" ColumnName="PublicUserId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -304,6 +360,7 @@
           <EntitySetMapping Name="tblFresherJobs">
             <EntityTypeMapping TypeName="SearchFresherJobsModel.tblFresherJob">
               <MappingFragment StoreEntitySet="tblFresherJobs">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="DeleteStatus" ColumnName="DeleteStatus" />
                 <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />

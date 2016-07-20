@@ -18,6 +18,8 @@ namespace SearchFresherJobs.DB
         public tblUser()
         {
             this.tblFreshers = new HashSet<tblFresher>();
+            this.tblFresherJobs = new HashSet<tblFresherJob>();
+            this.tblOrganizations = new HashSet<tblOrganization>();
         }
     
         public long UserId { get; set; }
@@ -29,9 +31,14 @@ namespace SearchFresherJobs.DB
         public System.DateTime CreatedDate { get; set; }
         public System.DateTime UpdatedDate { get; set; }
         public bool DeleteStatus { get; set; }
+        public long PublicUserId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblFresher> tblFreshers { get; set; }
         public virtual tblOrganization tblOrganization { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblFresherJob> tblFresherJobs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblOrganization> tblOrganizations { get; set; }
     }
 }

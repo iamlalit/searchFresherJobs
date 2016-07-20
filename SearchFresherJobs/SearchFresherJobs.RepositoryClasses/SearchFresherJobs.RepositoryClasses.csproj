@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountRepository.cs" />
+    <Compile Include="Common\CommonConstants.cs" />
+    <Compile Include="Common\Enums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchJobsRepository.cs" />
   </ItemGroup>

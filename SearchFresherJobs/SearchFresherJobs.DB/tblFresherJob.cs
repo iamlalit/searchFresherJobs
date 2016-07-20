@@ -22,5 +22,8 @@ namespace SearchFresherJobs.DB
         public System.DateTime CreatedDate { get; set; }
         public System.DateTime UpdatedDate { get; set; }
         public bool DeleteStatus { get; set; }
+        public long UserId { get; set; }
+    
+        public virtual tblUser tblUser { get; set; }
     }
 }

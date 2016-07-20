@@ -17,7 +17,7 @@ namespace SearchFresherJobs.RepositoryInterfaces
         /// <param name="encryptedPassword"></param>
         /// <param name="email"></param>
         /// <param name="userType"></param>
-        long CreateUser(string firstName, string lastName, string encryptedPassword, string email, short userType);
+        long CreateUser(string firstName, string lastName, string encryptedPassword, string email, short userType, long publicUserIdPrefix);
 
         /// <summary>
         /// Gets user details
@@ -26,5 +26,12 @@ namespace SearchFresherJobs.RepositoryInterfaces
         /// <param name="userType"></param>
         /// <returns></returns>
         tblUser GetUserDetails(string email, short userType);
+
+        /// <summary>
+        /// Gets user details by publicUserProfileId
+        /// </summary>
+        /// <param name="publicUserProfileId"></param>
+        /// <returns></returns>
+        tblUser GetUserDetailsByPublicUserId(long publicUserProfileId);
     }
 }

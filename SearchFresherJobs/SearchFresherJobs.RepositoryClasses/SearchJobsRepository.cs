@@ -45,5 +45,18 @@ namespace SearchFresherJobs.RepositoryClasses
                         updateddate = jobTable.updateddate
                     }).ToList();
         } 
+
+        /// <summary>
+        /// Creates new fresher job
+        /// </summary>
+        /// <param name="jobDetails"></param>
+        public void CreateFresherJob(tblFresherJob jobDetails)
+        {
+            DateTime curTime = DateTime.Now;
+            jobDetails.CreatedDate = curTime;
+            jobDetails.UpdatedDate = curTime;
+            _DBContext.Entry<tblFresherJob>(jobDetails).State = EntityState.Added;
+            _DBContext.SaveChanges();
+        }
     }
 }
