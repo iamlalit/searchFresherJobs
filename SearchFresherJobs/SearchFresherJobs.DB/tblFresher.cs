@@ -14,6 +14,14 @@ namespace SearchFresherJobs.DB
     
     public partial class tblFresher
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblFresher()
+        {
+            this.tblFresherPreferredLocations = new HashSet<tblFresherPreferredLocation>();
+            this.tblFresherFunctionalAreas = new HashSet<tblFresherFunctionalArea>();
+            this.tblFresherPreferredIndustries = new HashSet<tblFresherPreferredIndustry>();
+        }
+    
         public long FresherId { get; set; }
         public long UserId { get; set; }
         public string Address { get; set; }
@@ -23,7 +31,17 @@ namespace SearchFresherJobs.DB
         public System.DateTime CreatedDate { get; set; }
         public System.DateTime UpdatedDate { get; set; }
         public bool DeleteStatus { get; set; }
+        public System.DateTime DOB { get; set; }
+        public byte Gender { get; set; }
+        public Nullable<byte> MaritalStatus { get; set; }
+        public string ProfileSummary { get; set; }
     
         public virtual tblUser tblUser { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblFresherPreferredLocation> tblFresherPreferredLocations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblFresherFunctionalArea> tblFresherFunctionalAreas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblFresherPreferredIndustry> tblFresherPreferredIndustries { get; set; }
     }
 }

@@ -73,13 +73,31 @@
     <Compile Include="tblFresher.cs">
       <DependentUpon>SearchFresherJobsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="tblFresherFunctionalArea.cs">
+      <DependentUpon>SearchFresherJobsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblFresherJob.cs">
+      <DependentUpon>SearchFresherJobsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblFresherPreferredIndustry.cs">
+      <DependentUpon>SearchFresherJobsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblFresherPreferredLocation.cs">
+      <DependentUpon>SearchFresherJobsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblFunctionalArea.cs">
+      <DependentUpon>SearchFresherJobsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblIndustry.cs">
       <DependentUpon>SearchFresherJobsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tblJob.cs">
       <DependentUpon>SearchFresherJobsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tblOrganization.cs">
+      <DependentUpon>SearchFresherJobsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPreferredLocation.cs">
       <DependentUpon>SearchFresherJobsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tblUser.cs">

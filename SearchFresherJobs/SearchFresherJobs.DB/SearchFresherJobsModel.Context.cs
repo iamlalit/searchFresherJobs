@@ -30,5 +30,11 @@ namespace SearchFresherJobs.DB
         public virtual DbSet<tblOrganization> tblOrganizations { get; set; }
         public virtual DbSet<tblUser> tblUsers { get; set; }
         public virtual DbSet<tblFresherJob> tblFresherJobs { get; set; }
+        public virtual DbSet<tblFresherFunctionalArea> tblFresherFunctionalAreas { get; set; }
+        public virtual DbSet<tblFresherPreferredIndustry> tblFresherPreferredIndustries { get; set; }
+        public virtual DbSet<tblFresherPreferredLocation> tblFresherPreferredLocations { get; set; }
+        public virtual DbSet<tblFunctionalArea> tblFunctionalAreas { get; set; }
+        public virtual DbSet<tblIndustry> tblIndustries { get; set; }
+        public virtual DbSet<tblPreferredLocation> tblPreferredLocations { get; set; }
     }
 }
