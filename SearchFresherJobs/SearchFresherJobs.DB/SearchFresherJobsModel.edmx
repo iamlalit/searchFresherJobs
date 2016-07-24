@@ -60,20 +60,6 @@
           <Property Name="FresherProfileId" Type="bigint" />
           <Property Name="FresherPreferredLocation" Type="bigint" />
         </EntityType>
-        <EntityType Name="tblFunctionalArea">
-          <Key>
-            <PropertyRef Name="FunctionalAreaId" />
-          </Key>
-          <Property Name="FunctionalAreaId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FunctionalAreaName" Type="nvarchar" MaxLength="250" />
-        </EntityType>
-        <EntityType Name="tblIndustry">
-          <Key>
-            <PropertyRef Name="IndustryId" />
-          </Key>
-          <Property Name="IndustryId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IndustryName" Type="nchar" MaxLength="10" />
-        </EntityType>
         <EntityType Name="tblJobs">
           <Key>
             <PropertyRef Name="id" />
@@ -104,13 +90,6 @@
           <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
           <Property Name="DeleteStatus" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="tblPreferredLocation">
-          <Key>
-            <PropertyRef Name="PreferredLocationId" />
-          </Key>
-          <Property Name="PreferredLocationId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PreferredLocationName" Type="nvarchar" MaxLength="200" />
-        </EntityType>
         <EntityType Name="tblUser">
           <Key>
             <PropertyRef Name="UserId" />
@@ -125,18 +104,6 @@
           <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
           <Property Name="DeleteStatus" Type="bit" Nullable="false" />
         </EntityType>
-        <Association Name="FK_FresherPreferredLocation_PreferredLocation">
-          <End Role="tblPreferredLocation" Type="Self.tblPreferredLocation" Multiplicity="0..1" />
-          <End Role="tblFresherPreferredLocation" Type="Self.tblFresherPreferredLocation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPreferredLocation">
-              <PropertyRef Name="PreferredLocationId" />
-            </Principal>
-            <Dependent Role="tblFresherPreferredLocation">
-              <PropertyRef Name="FresherPreferredLocation" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_FresherPreferredLocation_tblFresher">
           <End Role="tblFresher" Type="Self.tblFresher" Multiplicity="0..1" />
           <End Role="tblFresherPreferredLocation" Type="Self.tblFresherPreferredLocation" Multiplicity="*" />
@@ -173,18 +140,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tblFresherFunctionalArea_tblFunctionalArea">
-          <End Role="tblFunctionalArea" Type="Self.tblFunctionalArea" Multiplicity="1" />
-          <End Role="tblFresherFunctionalArea" Type="Self.tblFresherFunctionalArea" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="tblFunctionalArea">
-              <PropertyRef Name="FunctionalAreaId" />
-            </Principal>
-            <Dependent Role="tblFresherFunctionalArea">
-              <PropertyRef Name="FresherFunctionalAreaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_tblFresherPreferredIndustry_tblFresher">
           <End Role="tblFresher" Type="Self.tblFresher" Multiplicity="0..1" />
           <End Role="tblFresherPreferredIndustry" Type="Self.tblFresherPreferredIndustry" Multiplicity="*" />
@@ -194,18 +149,6 @@
             </Principal>
             <Dependent Role="tblFresherPreferredIndustry">
               <PropertyRef Name="FresherProfileId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblFresherPreferredIndustry_tblIndustry">
-          <End Role="tblIndustry" Type="Self.tblIndustry" Multiplicity="0..1" />
-          <End Role="tblFresherPreferredIndustry" Type="Self.tblFresherPreferredIndustry" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblIndustry">
-              <PropertyRef Name="IndustryId" />
-            </Principal>
-            <Dependent Role="tblFresherPreferredIndustry">
-              <PropertyRef Name="FresherIndustryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -227,16 +170,9 @@
           <EntitySet Name="tblFresherJobs" EntityType="Self.tblFresherJobs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblFresherPreferredIndustry" EntityType="Self.tblFresherPreferredIndustry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblFresherPreferredLocation" EntityType="Self.tblFresherPreferredLocation" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblFunctionalArea" EntityType="Self.tblFunctionalArea" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblIndustry" EntityType="Self.tblIndustry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblJobs" EntityType="Self.tblJobs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblOrganization" EntityType="Self.tblOrganization" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblPreferredLocation" EntityType="Self.tblPreferredLocation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_FresherPreferredLocation_PreferredLocation" Association="Self.FK_FresherPreferredLocation_PreferredLocation">
-            <End Role="tblPreferredLocation" EntitySet="tblPreferredLocation" />
-            <End Role="tblFresherPreferredLocation" EntitySet="tblFresherPreferredLocation" />
-          </AssociationSet>
           <AssociationSet Name="FK_FresherPreferredLocation_tblFresher" Association="Self.FK_FresherPreferredLocation_tblFresher">
             <End Role="tblFresher" EntitySet="tblFresher" />
             <End Role="tblFresherPreferredLocation" EntitySet="tblFresherPreferredLocation" />
@@ -249,16 +185,8 @@
             <End Role="tblFresher" EntitySet="tblFresher" />
             <End Role="tblFresherFunctionalArea" EntitySet="tblFresherFunctionalArea" />
           </AssociationSet>
-          <AssociationSet Name="FK_tblFresherFunctionalArea_tblFunctionalArea" Association="Self.FK_tblFresherFunctionalArea_tblFunctionalArea">
-            <End Role="tblFunctionalArea" EntitySet="tblFunctionalArea" />
-            <End Role="tblFresherFunctionalArea" EntitySet="tblFresherFunctionalArea" />
-          </AssociationSet>
           <AssociationSet Name="FK_tblFresherPreferredIndustry_tblFresher" Association="Self.FK_tblFresherPreferredIndustry_tblFresher">
             <End Role="tblFresher" EntitySet="tblFresher" />
-            <End Role="tblFresherPreferredIndustry" EntitySet="tblFresherPreferredIndustry" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblFresherPreferredIndustry_tblIndustry" Association="Self.FK_tblFresherPreferredIndustry_tblIndustry">
-            <End Role="tblIndustry" EntitySet="tblIndustry" />
             <End Role="tblFresherPreferredIndustry" EntitySet="tblFresherPreferredIndustry" />
           </AssociationSet>
           <AssociationSet Name="FK_tblOrganization_tblUser" Association="Self.FK_tblOrganization_tblUser">
@@ -660,31 +588,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblFunctionalAreas">
-            <EntityTypeMapping TypeName="SearchFresherJobsModel.tblFunctionalArea">
-              <MappingFragment StoreEntitySet="tblFunctionalArea">
-                <ScalarProperty Name="FunctionalAreaName" ColumnName="FunctionalAreaName" />
-                <ScalarProperty Name="FunctionalAreaId" ColumnName="FunctionalAreaId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblIndustries">
-            <EntityTypeMapping TypeName="SearchFresherJobsModel.tblIndustry">
-              <MappingFragment StoreEntitySet="tblIndustry">
-                <ScalarProperty Name="IndustryName" ColumnName="IndustryName" />
-                <ScalarProperty Name="IndustryId" ColumnName="IndustryId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblPreferredLocations">
-            <EntityTypeMapping TypeName="SearchFresherJobsModel.tblPreferredLocation">
-              <MappingFragment StoreEntitySet="tblPreferredLocation">
-                <ScalarProperty Name="PreferredLocationName" ColumnName="PreferredLocationName" />
-                <ScalarProperty Name="PreferredLocationId" ColumnName="PreferredLocationId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

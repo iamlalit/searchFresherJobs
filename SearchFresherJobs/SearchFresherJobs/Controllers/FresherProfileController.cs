@@ -9,7 +9,7 @@ namespace SearchFresherJobs.Controllers
     public class FresherProfileController : Controller
     {
         // GET: FresherProfile
-        public ActionResult Index()
+        public ActionResult FresherProfile()
         {
             return View();
         }

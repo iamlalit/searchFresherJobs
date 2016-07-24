@@ -36,7 +36,9 @@ namespace SearchFresherJobs
             bundles.Add(new ScriptBundle("~/Scripts/Custom").Include(
                       "~/Content/spec/JsonConstants.js",
                       "~/Scripts/app.js",
-                      "~/Scripts/searchFreshers/app.js"
+                      "~/Scripts/searchFreshers/app.js",
+                      "~/Scripts/fresherProfile/fresherProfileVM.js"
+                      
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/LoginPage").Include(
