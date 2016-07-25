@@ -30,13 +30,28 @@ namespace SearchFresherJobs.RepositoryClasses
             return (from u in _DbContext.Set<tblUser>()
                     join f in _DbContext.Set<tblFresher>()
                     on u.UserId equals f.UserId
+                    join fn in _DbContext.Set<tblFresherFunctionalArea>()
+                    on f.FresherId equals fn.FresherProfileId
+                    join p in _DbContext.Set<tblFresherPreferredLocation>()
+                    on f.FresherId equals p.FresherProfileId
+                    join i in _DbContext.Set<tblFresherPreferredIndustry>()
+                    on f.FresherId equals i.FresherProfileId
                     where u.Email == email
                     select new FresherProfile
                     {
                         Address = f.Address,
                         City = f.City,
                         Country = f.Counrty,
-                        State = f.Counrty
+                        State = f.State,
+                        DeleteStatus = f.DeleteStatus,
+                        DOB = f.DOB,
+                        FresherId = f.FresherId,
+                        UserId = f.UserId,
+                        Gender = f.Gender,
+                        MaritalStatus = f.MaritalStatus == null ? (short)0 : f.MaritalStatus.Value,
+                        ProfileSummary = f.ProfileSummary,
+
+
                     }).FirstOrDefault();
         }
     }
