@@ -27,32 +27,54 @@ namespace SearchFresherJobs.RepositoryClasses
         public FresherProfile Get(string email)
         {
             //Animesh: Use Automapper in the project
-            return (from u in _DbContext.Set<tblUser>()
-                    join f in _DbContext.Set<tblFresher>()
-                    on u.UserId equals f.UserId
-                    join fn in _DbContext.Set<tblFresherFunctionalArea>()
-                    on f.FresherId equals fn.FresherProfileId
-                    join p in _DbContext.Set<tblFresherPreferredLocation>()
-                    on f.FresherId equals p.FresherProfileId
-                    join i in _DbContext.Set<tblFresherPreferredIndustry>()
-                    on f.FresherId equals i.FresherProfileId
-                    where u.Email == email
-                    select new FresherProfile
-                    {
-                        Address = f.Address,
-                        City = f.City,
-                        Country = f.Counrty,
-                        State = f.State,
-                        DeleteStatus = f.DeleteStatus,
-                        DOB = f.DOB,
-                        FresherId = f.FresherId,
-                        UserId = f.UserId,
-                        Gender = f.Gender,
-                        MaritalStatus = f.MaritalStatus == null ? (short)0 : f.MaritalStatus.Value,
-                        ProfileSummary = f.ProfileSummary,
+            var fresherProfile = (from u in _DbContext.Set<tblUser>()
+                                  join f in _DbContext.Set<tblFresher>()
+                                  on u.UserId equals f.UserId
+                                  join fn in _DbContext.Set<tblFresherFunctionalArea>()
+                                  on f.FresherId equals fn.FresherProfileId into funcArea
+                                  from fa in funcArea.DefaultIfEmpty()
+                                  join p in _DbContext.Set<tblFresherPreferredLocation>()
+                                  on f.FresherId equals p.FresherProfileId into frProfile
+                                  from fp in frProfile.DefaultIfEmpty()
+                                  join i in _DbContext.Set<tblFresherPreferredIndustry>()
+                                  on f.FresherId equals i.FresherProfileId into frInd
+                                  from fi in frInd.DefaultIfEmpty()
+                                  where u.Email == email
+                                  select new FresherProfile
+                                  {
+                                      Address = f.Address,
+                                      City = f.City,
+                                      Country = f.Counrty,
+                                      State = f.State,
+                                      DeleteStatus = f.DeleteStatus,
+                                      DOB = f.DOB,
+                                      FresherId = f.FresherId,
+                                      UserId = f.UserId,
+                                      Gender = f.Gender,
+                                      MaritalStatus = f.MaritalStatus == null ? (short)0 : f.MaritalStatus.Value,
+                                      ProfileSummary = f.ProfileSummary,
+                                      FunctionalArea = fa.FresherFunctionalArea == null ? (long)0 : fa.FresherFunctionalArea.Value,
+                                      Industry = fi.FresherPreferredIndustry,
+                                      PreferredLocation = fp.FresherPreferredLocation == null ? (long)0 : fp.FresherPreferredLocation.Value
+                                  }).ToList();
 
-
-                    }).FirstOrDefault();
+            return new FresherProfile
+            {
+                Address = fresherProfile[0].Address,
+                City = fresherProfile[0].City,
+                Country = fresherProfile[0].Country,
+                DeleteStatus = fresherProfile[0].DeleteStatus,
+                DOB = fresherProfile[0].DOB,
+                FresherId = fresherProfile[0].FresherId,
+                Gender = fresherProfile[0].Gender,
+                State = fresherProfile[0].State,
+                MaritalStatus = fresherProfile[0].MaritalStatus,
+                UserId = fresherProfile[0].UserId,
+                ProfileSummary = fresherProfile[0].ProfileSummary,
+                FunctionalAreaList = fresherProfile.Select(f => f.FunctionalArea).ToList(),
+                IndustryList = fresherProfile.Select(f => f.Industry).ToList(),
+                PreferredLocationList = fresherProfile.Select(f => f.PreferredLocation).ToList()
+            };
         }
     }
 }

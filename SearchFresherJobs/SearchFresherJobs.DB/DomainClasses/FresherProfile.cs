@@ -66,16 +66,31 @@ namespace SearchFresherJobs.DB.DomainClasses
         /// <summary>
         /// Preferred job locations of fresher
         /// </summary>
-        public List<int> PreferredLocation { get; set; }
+        public long PreferredLocation { get; set; }
 
         /// <summary>
         /// Functional area of fresher
         /// </summary>
-        public List<int> FunctionalArea { get; set; }
+        public long FunctionalArea { get; set; }
 
         /// <summary>
         /// Industry in which seeking job
         /// </summary>
-        public List<int> Industry { get; set; }
+        public long Industry { get; set; }
+
+        /// <summary>
+        /// Preferred job locations of fresher
+        /// </summary>
+        public List<long> PreferredLocationList { get; set; }
+
+        /// <summary>
+        /// Functional area of fresher
+        /// </summary>
+        public List<long> FunctionalAreaList { get; set; }
+
+        /// <summary>
+        /// Industry in which seeking job
+        /// </summary>
+        public List<long> IndustryList { get; set; }
     }
 }
