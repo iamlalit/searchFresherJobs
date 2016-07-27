@@ -19,6 +19,5 @@ namespace SearchFresherJobs.DB
         public Nullable<long> FresherIndustryId { get; set; }
     
         public virtual tblFresher tblFresher { get; set; }
-        public virtual tblIndustry tblIndustry { get; set; }
     }
 }

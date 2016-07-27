@@ -18,7 +18,7 @@ namespace SearchFresherJobsAPI.Controllers
         }
 
         /// <summary>
-        /// api to register a user 
+        /// Get fresher basic profile data 
         /// </summary>
         /// <param name="email"></param>
         /// <param name="password"></param>
@@ -43,5 +43,33 @@ namespace SearchFresherJobsAPI.Controllers
                 return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, new HttpError(ex.Message));
             }
         }
+
+
+        /// <summary>
+        /// Post fresher basic profile data 
+        /// </summary>
+        /// <param name="fresherProfile"></param>
+        [HttpPost]
+        public HttpResponseMessage Post(FresherProfile fresherProfile)
+        {
+            try
+            {
+                if (fresherProfile != null)
+                {
+                    var result = _FresherProfileRepository.Post(fresherProfile);
+                    if (result)
+                    {
+                        return this.Request.CreateResponse(HttpStatusCode.OK, true);
+                    }
+                }
+                return this.Request.CreateResponse(HttpStatusCode.BadRequest, false);
+            }
+            catch (Exception ex)
+            {
+                var x = ex.Message;
+                return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, new HttpError(ex.Message));
+            }
+        }
+
     }
 }

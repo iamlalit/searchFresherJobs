@@ -15,5 +15,12 @@ namespace SearchFresherJobs.RepositoryInterfaces
         /// <param name="email"></param>
         /// <returns></returns>
         FresherProfile Get(string email);
+
+        /// <summary>
+        /// Posts the fresher profile data
+        /// </summary>
+        /// <param name="fresherProfile"></param>
+        /// <returns></returns>
+        bool Post(FresherProfile fresherProfile);
     }
 }

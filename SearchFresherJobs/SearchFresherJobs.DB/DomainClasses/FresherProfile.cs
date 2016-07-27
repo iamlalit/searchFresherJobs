@@ -51,12 +51,12 @@ namespace SearchFresherJobs.DB.DomainClasses
         /// <summary>
         /// Gender of fresher
         /// </summary>
-        public short Gender { get; set; }
+        public byte Gender { get; set; }
 
         /// <summary>
         /// Marital Status of fresher
         /// </summary>
-        public short MaritalStatus { get; set; }
+        public byte MaritalStatus { get; set; }
 
         /// <summary>
         /// Profile summary of fresher

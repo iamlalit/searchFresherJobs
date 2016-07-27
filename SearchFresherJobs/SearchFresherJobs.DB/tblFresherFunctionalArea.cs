@@ -19,6 +19,5 @@ namespace SearchFresherJobs.DB
         public Nullable<long> FresherFunctionalArea { get; set; }
     
         public virtual tblFresher tblFresher { get; set; }
-        public virtual tblFunctionalArea tblFunctionalArea { get; set; }
     }
 }

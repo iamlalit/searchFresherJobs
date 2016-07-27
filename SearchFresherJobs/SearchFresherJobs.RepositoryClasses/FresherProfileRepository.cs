@@ -51,7 +51,7 @@ namespace SearchFresherJobs.RepositoryClasses
                                       FresherId = f.FresherId,
                                       UserId = f.UserId,
                                       Gender = f.Gender,
-                                      MaritalStatus = f.MaritalStatus == null ? (short)0 : f.MaritalStatus.Value,
+                                      MaritalStatus = f.MaritalStatus == null ? (byte)0 : f.MaritalStatus.Value,
                                       ProfileSummary = f.ProfileSummary,
                                       FunctionalArea = fa.FresherFunctionalArea == null ? (long)0 : fa.FresherFunctionalArea.Value,
                                       Industry = fi.FresherPreferredIndustry,
@@ -75,6 +75,47 @@ namespace SearchFresherJobs.RepositoryClasses
                 IndustryList = fresherProfile.Select(f => f.Industry).ToList(),
                 PreferredLocationList = fresherProfile.Select(f => f.PreferredLocation).ToList()
             };
+        }
+
+        /// <summary>
+        /// Posts the fresher profile data
+        /// </summary>
+        /// <param name="fresherProfile"></param>
+        /// <returns></returns>
+        public bool Post(FresherProfile fresherProfile)
+        {
+            DateTime currDate = new DateTime();
+            tblFresher tblFresherProfile = new tblFresher();
+            tblFresherProfile.Address = fresherProfile.Address;
+            tblFresherProfile.City = fresherProfile.City;
+            tblFresherProfile.Counrty = fresherProfile.Country;
+            tblFresherProfile.CreatedDate = currDate;
+            tblFresherProfile.UpdatedDate = currDate;
+            tblFresherProfile.DeleteStatus = false;
+            tblFresherProfile.DOB = fresherProfile.DOB;
+            tblFresherProfile.FresherId = fresherProfile.FresherId;//Take this out from session
+            tblFresherProfile.Gender = fresherProfile.Gender;
+            tblFresherProfile.MaritalStatus = fresherProfile.MaritalStatus;
+            tblFresherProfile.ProfileSummary = fresherProfile.ProfileSummary;
+            tblFresherProfile.State = fresherProfile.State;
+            foreach (long item in fresherProfile.FunctionalAreaList)
+            {
+                tblFresherProfile.tblFresherFunctionalAreas.Add(new tblFresherFunctionalArea { FresherFunctionalArea = item, FresherProfileId = fresherProfile.FresherId });
+            }
+            foreach (long item in fresherProfile.PreferredLocationList)
+            {
+                tblFresherProfile.tblFresherPreferredLocations.Add(new tblFresherPreferredLocation { FresherPreferredLocation = item, FresherProfileId = fresherProfile.FresherId });
+            }
+
+            foreach (long item in fresherProfile.IndustryList)
+            {
+                tblFresherProfile.tblFresherPreferredIndustries.Add(new tblFresherPreferredIndustry { FresherPreferredIndustry = item, FresherProfileId = fresherProfile.FresherId });
+            }
+
+            _DbContext.Entry(tblFresherProfile).State = EntityState.Added;
+            _DbContext.SaveChanges();
+
+            return true;
         }
     }
 }

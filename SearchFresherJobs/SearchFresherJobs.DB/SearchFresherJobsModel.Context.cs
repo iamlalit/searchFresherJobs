@@ -12,19 +12,19 @@ namespace SearchFresherJobs.DB
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class SearchFresherJobsEntities : DbContext
     {
         public SearchFresherJobsEntities()
             : base("name=SearchFresherJobsEntities")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<tblFresher> tblFreshers { get; set; }
         public virtual DbSet<tblJob> tblJobs { get; set; }
         public virtual DbSet<tblOrganization> tblOrganizations { get; set; }
@@ -33,8 +33,5 @@ namespace SearchFresherJobs.DB
         public virtual DbSet<tblFresherFunctionalArea> tblFresherFunctionalAreas { get; set; }
         public virtual DbSet<tblFresherPreferredIndustry> tblFresherPreferredIndustries { get; set; }
         public virtual DbSet<tblFresherPreferredLocation> tblFresherPreferredLocations { get; set; }
-        public virtual DbSet<tblFunctionalArea> tblFunctionalAreas { get; set; }
-        public virtual DbSet<tblIndustry> tblIndustries { get; set; }
-        public virtual DbSet<tblPreferredLocation> tblPreferredLocations { get; set; }
     }
 }
