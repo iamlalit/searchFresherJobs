@@ -12,19 +12,19 @@ namespace SearchFresherJobs.DB
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
+    
     public partial class SearchFresherJobsEntities : DbContext
     {
         public SearchFresherJobsEntities()
             : base("name=SearchFresherJobsEntities")
         {
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-
+    
         public virtual DbSet<tblFresher> tblFreshers { get; set; }
         public virtual DbSet<tblJob> tblJobs { get; set; }
         public virtual DbSet<tblOrganization> tblOrganizations { get; set; }
