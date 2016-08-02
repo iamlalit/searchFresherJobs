@@ -10,13 +10,24 @@
     $scope.industryCollection = industryCollection;
     $scope.functionalAreaCollection = functionalAreaCollection;
 
-    $scope.login = function () {
-        var url = apiEndpointUrl + 'AccountAPI/Login?email=' + $scope.profileSummary + '&password=' + $scope.dob + '&userType=' + $scope.gender + $scope.maritalStatus + $scope.address + $scope.city + $scope.state;
+    $scope.addProfile = function () {
+        var url = apiEndpointUrl + 'FresherProfileAPI/Post';
         debugger;
-        //$http.get(url).success(function () {
+        var data = {
+            ProfileSummary: $scope.profileSummary,
+            Gender: $scope.gender,
+            MaritalStatus: $scope.maritalStatus,
+            PreferredLocationList: $scope.preferredLocation,
+            IndustryList: $scope.industry,
+            FunctionalAreaList: $scope.functionalArea,
+            Address: $scope.address,
+            City: $scope.city,
+            State: $scope.state
+        }
+        $http.post(url,data).success(function () {
 
-        //}).error(function (error) {
-        //    console.log(error);
-        //});
+        }).error(function (error) {
+            console.log(error);
+        });
     }
 }]);

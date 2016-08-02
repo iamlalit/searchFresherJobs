@@ -46,11 +46,11 @@
         </EntityType>
         <EntityType Name="tblFresherPreferredIndustry">
           <Key>
-            <PropertyRef Name="FresherPreferredIndustry" />
+            <PropertyRef Name="FresherPreferredIndustryId" />
           </Key>
-          <Property Name="FresherPreferredIndustry" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FresherPreferredIndustry" Type="bigint" Nullable="false" StoreGeneratedPattern="None" />
           <Property Name="FresherProfileId" Type="bigint" />
-          <Property Name="FresherIndustryId" Type="bigint" />
+          <Property Name="FresherPreferredIndustryId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="tblFresherPreferredLocation">
           <Key>
@@ -345,12 +345,12 @@
         </EntityType>
         <EntityType Name="tblFresherPreferredIndustry">
           <Key>
-            <PropertyRef Name="FresherPreferredIndustry" />
+            <PropertyRef Name="FresherPreferredIndustryId" />
           </Key>
-          <Property Name="FresherPreferredIndustry" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FresherPreferredIndustry" Type="Int64" annotation:StoreGeneratedPattern="None" Nullable="false" />
           <Property Name="FresherProfileId" Type="Int64" />
-          <Property Name="FresherIndustryId" Type="Int64" />
           <NavigationProperty Name="tblFresher" Relationship="SearchFresherJobsModel.FK_tblFresherPreferredIndustry_tblFresher" FromRole="tblFresherPreferredIndustry" ToRole="tblFresher" />
+          <Property Name="FresherPreferredIndustryId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="tblFresherPreferredLocation">
           <Key>
@@ -495,7 +495,7 @@
           <EntitySetMapping Name="tblFresherPreferredIndustries">
             <EntityTypeMapping TypeName="SearchFresherJobsModel.tblFresherPreferredIndustry">
               <MappingFragment StoreEntitySet="tblFresherPreferredIndustry">
-                <ScalarProperty Name="FresherIndustryId" ColumnName="FresherIndustryId" />
+                <ScalarProperty Name="FresherPreferredIndustryId" ColumnName="FresherPreferredIndustryId" />
                 <ScalarProperty Name="FresherProfileId" ColumnName="FresherProfileId" />
                 <ScalarProperty Name="FresherPreferredIndustry" ColumnName="FresherPreferredIndustry" />
               </MappingFragment>

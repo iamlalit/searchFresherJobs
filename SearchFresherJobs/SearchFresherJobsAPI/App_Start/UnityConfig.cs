@@ -18,6 +18,7 @@ namespace SearchFresherJobsAPI
             // e.g. container.RegisterType<ITestService, TestService>();
             container.RegisterType<IAccountRepository, AccountRepository>();
             container.RegisterType<ISearchJobsRepository, SearchJobsRepository>();
+            container.RegisterType<IFresherProfileRepository, FresherProfileRepository>();
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }

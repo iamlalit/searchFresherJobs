@@ -5,16 +5,16 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="702f5d046c99499a9679b592c9877ff2" Name="Diagram1" ZoomLevel="73">
-        <EntityTypeShape EntityType="SearchFresherJobsModel.tblFresher" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SearchFresherJobsModel.tblJob" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SearchFresherJobsModel.tblOrganization" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SearchFresherJobsModel.tblUser" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SearchFresherJobsModel.tblFresher" Width="2.25" PointX="2.875" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SearchFresherJobsModel.tblJob" Width="1.5" PointX="5.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SearchFresherJobsModel.tblOrganization" Width="1.5" PointX="2.875" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SearchFresherJobsModel.tblUser" Width="1.5" PointX="0.625" PointY="2.625" IsExpanded="true" />
         <AssociationConnector Association="SearchFresherJobsModel.FK_tblFresher_tblUser" ManuallyRouted="false" />
         <AssociationConnector Association="SearchFresherJobsModel.FK_tblOrganization_tblUser" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="SearchFresherJobsModel.tblFresherJob" Width="1.5" PointX="5.375" PointY="4.75" />
-        <EntityTypeShape EntityType="SearchFresherJobsModel.tblFresherFunctionalArea" Width="1.5" PointX="8.25" PointY="6.75" />
-        <EntityTypeShape EntityType="SearchFresherJobsModel.tblFresherPreferredIndustry" Width="1.5" PointX="8.25" PointY="0.75" />
-        <EntityTypeShape EntityType="SearchFresherJobsModel.tblFresherPreferredLocation" Width="1.5" PointX="8.25" PointY="3.75" />
+        <EntityTypeShape EntityType="SearchFresherJobsModel.tblFresherJob" Width="1.5" PointX="5.25" PointY="4.5" />
+        <EntityTypeShape EntityType="SearchFresherJobsModel.tblFresherFunctionalArea" Width="1.5" PointX="8.125" PointY="6.5" />
+        <EntityTypeShape EntityType="SearchFresherJobsModel.tblFresherPreferredIndustry" Width="2.625" PointX="8.125" PointY="0.5" />
+        <EntityTypeShape EntityType="SearchFresherJobsModel.tblFresherPreferredLocation" Width="1.5" PointX="8.125" PointY="3.5" />
         <AssociationConnector Association="SearchFresherJobsModel.FK_FresherPreferredLocation_tblFresher" />
         <AssociationConnector Association="SearchFresherJobsModel.FK_tblFresherFunctionalArea_tblFresher" />
         <AssociationConnector Association="SearchFresherJobsModel.FK_tblFresherPreferredIndustry_tblFresher" />

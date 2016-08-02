@@ -84,7 +84,7 @@ namespace SearchFresherJobs.RepositoryClasses
         /// <returns></returns>
         public bool Post(FresherProfile fresherProfile)
         {
-            DateTime currDate = new DateTime();
+            DateTime currDate = DateTime.UtcNow;
             tblFresher tblFresherProfile = new tblFresher();
             tblFresherProfile.Address = fresherProfile.Address;
             tblFresherProfile.City = fresherProfile.City;
@@ -92,12 +92,13 @@ namespace SearchFresherJobs.RepositoryClasses
             tblFresherProfile.CreatedDate = currDate;
             tblFresherProfile.UpdatedDate = currDate;
             tblFresherProfile.DeleteStatus = false;
-            tblFresherProfile.DOB = fresherProfile.DOB;
-            tblFresherProfile.FresherId = fresherProfile.FresherId;//Take this out from session
+            tblFresherProfile.DOB = currDate;//DevNote:Insert the correct dob from the date ui control
+            tblFresherProfile.FresherId = fresherProfile.FresherId;//DevNote:Take this out from session
             tblFresherProfile.Gender = fresherProfile.Gender;
             tblFresherProfile.MaritalStatus = fresherProfile.MaritalStatus;
             tblFresherProfile.ProfileSummary = fresherProfile.ProfileSummary;
             tblFresherProfile.State = fresherProfile.State;
+            tblFresherProfile.UserId = fresherProfile.UserId;
             foreach (long item in fresherProfile.FunctionalAreaList)
             {
                 tblFresherProfile.tblFresherFunctionalAreas.Add(new tblFresherFunctionalArea { FresherFunctionalArea = item, FresherProfileId = fresherProfile.FresherId });
