@@ -4,7 +4,7 @@
 <div>
     Profile Summary:
     <div>
-        <textarea ng-model="profileSummary"></textarea>
+        <textarea ng-readonly="inEditMode" ng-model="profileSummary"></textarea>
     </div>
     Date Of Birth:
     <div>
@@ -12,44 +12,47 @@
                        md-open-on-focus></md-datepicker>
     </div>
     Gender
-    <div>
-        <select ng-model="gender">
+        <label ng-show="!inEditMode" ng-model="genderValue"></label>
+        <select ng-show="inEditMode" ng-model="gender">
             <option ng-repeat="option in genderCollection" value="{{option.id}}">{{option.name}}</option>
         </select>
     </div>
     Marital Status:
     <div>
-        <select ng-model="maritalStatus">
+        <label ng-show="!inEditMode" ng-model="maritalStatusValue"></label>
+        <select ng-show="inEditMode" ng-model="maritalStatus">
             <option ng-repeat="option in maritalStatusCollection" value="{{option.id}}">{{option.name}}</option>
         </select>
     </div>
     Preferred Location:
     <div>
-        <select ng-model="preferredLocation" multiple>
+        <select ng-readonly="inEditMode" ng-model="preferredLocation" multiple>
             <option ng-repeat="option in preferredLocationCollection" value="{{option.id}}">{{option.name}} </option>
         </select>
     </div>
     Industry:
     <div>
-        <select ng-model="industry" multiple>
+        <select ng-readonly="inEditMode" ng-model="industry" multiple>
             <option ng-repeat="option in industryCollection" value="{{option.id}}">{{option.name}} </option>
         </select>
     </div>
     Functional Area:
     <div>
-        <select ng-model="functionalArea" multiple>
+        <select ng-readonly="inEditMode" ng-model="functionalArea" multiple>
             <option ng-repeat="option in functionalAreaCollection" value="{{option.id}}">{{option.name}} </option>
         </select>
     </div>
     Address:
     <div>
-        <input ng-model="address" />
+        <label ng-show="!inEditMode" ng-model="address"></label>
+        <input ng-show="inEditMode" ng-model="address" />
     </div>City:
     <div>
-        <input ng-model="city" />
+        <label ng-show="!inEditMode" ng-model="city"></label>
+        <input ng-show="city" />
     </div>State:
     <div>
-        <select ng-model="state">
+        <select ng-readonly="inEditMode" ng-model="state">
             <option ng-repeat="option in statesCollection" value="{{option.id}}">{{option.name}}</option>
         </select>
     </div>

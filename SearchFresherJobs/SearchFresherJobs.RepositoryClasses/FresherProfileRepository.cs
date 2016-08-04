@@ -24,8 +24,9 @@ namespace SearchFresherJobs.RepositoryClasses
         /// </summary>
         /// <param name="email"></param>
         /// <returns></returns>
-        public FresherProfile Get(string email)
+        public FresherProfile Get(int id)
         {
+            long longId = (long)id;
             //Animesh: Use Automapper in the project
             var fresherProfile = (from u in _DbContext.Set<tblUser>()
                                   join f in _DbContext.Set<tblFresher>()
@@ -39,7 +40,7 @@ namespace SearchFresherJobs.RepositoryClasses
                                   join i in _DbContext.Set<tblFresherPreferredIndustry>()
                                   on f.FresherId equals i.FresherProfileId into frInd
                                   from fi in frInd.DefaultIfEmpty()
-                                  where u.Email == email
+                                  where u.UserId == longId
                                   select new FresherProfile
                                   {
                                       Address = f.Address,

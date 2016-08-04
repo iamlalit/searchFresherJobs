@@ -25,16 +25,16 @@ namespace SearchFresherJobsAPI.Controllers
         /// <param name="name"></param>
         /// <returns></returns>
         [HttpGet]
-        public HttpResponseMessage Get(string email)
+        public HttpResponseMessage Get(int id)
         {
             FresherProfile fresherProfileData = null;
-            if (string.IsNullOrWhiteSpace(email))
+            if (id == 0)
             {
                 return this.Request.CreateErrorResponse(HttpStatusCode.BadRequest, new HttpError("Email id is blank"));
             }
             try
             {
-                fresherProfileData = _FresherProfileRepository.Get(email);
+                fresherProfileData = _FresherProfileRepository.Get(id);
                 return this.Request.CreateResponse(HttpStatusCode.OK, fresherProfileData);
             }
             catch (Exception ex)
