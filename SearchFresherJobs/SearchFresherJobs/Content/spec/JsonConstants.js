@@ -58,14 +58,14 @@ var statesCollection = [
 ];
 
 var preferredLocationCollection = [
-   { id: '1', name: 'Delhi-NCR' },
-   { id: '2', name: 'Hyderabad' },
-   { id: '3', name: 'Chennai' },
-   { id: '4', name: 'Pune' },
-   { id: '5', name: 'Bangluru' },
-   { id: '6', name: 'Kolkata' },
+   { id: '100', name: 'Delhi-NCR' },
+   { id: '200', name: 'Hyderabad' },
+   { id: '300', name: 'Chennai' },
+   { id: '400', name: 'Pune' },
+   { id: '500', name: 'Bangluru' },
+   { id: '600', name: 'Kolkata' },
 ];
-
+//sort order is the order in which they appear and name followed by pipe and id 
 var industryCollection = [
    { id: '100', name: 'Animation' },
    { id: '500', name: 'BPO-ITES' },

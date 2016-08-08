@@ -14,15 +14,28 @@
     //Devnote: Replace the id= 1 here with actual id of member obtained from session
     $http.get(apiEndpointUrl + 'FresherProfileAPI/Get?id=3')
     .then(function (response) {
-        $scope.profileSummary = response.ProfileSummary;
-        $scope.genderValue = response.Gender;
-        $scope.maritalStatusValue = response.MaritalStatus;
-        $scope.preferredLocation = response.PreferredLocationList;
-        $scope.industry = response.IndustryList;
-        $scope.functionalArea = response.FunctionalAreaList;
-        $scope.address = response.Address;
-        $scope.city = response.City;
-        $scope.state = response.State;
+        debugger;
+        $scope.profileSummary = response.data.ProfileSummary;
+        $.each(genderCollection, function (i, item) {
+            if (item.id == response.data.Gender.toString()) $scope.genderValue = item.name;
+        });
+        $.each(maritalStatusCollection, function (i, item) {
+            if (item.id == response.data.MaritalStatus.toString()) $scope.maritalStatusValue = item.name;
+        });
+        $.each(preferredLocationCollection, function (i, item) {
+            if (item.id == response.data.PreferredLocationList.toString()) $scope.preferredLocation = item.name;
+        });
+        $.each(industryCollection, function (i, item) {
+            if (item.id == response.data.IndustryList.toString()) $scope.industry = item.name;
+        });
+        $.each(functionalAreaCollection, function (i, item) {
+            if (item.id == response.data.FunctionalAreaList.toString()) $scope.functionalArea = item.name;
+        });
+        $scope.address = response.data.Address;
+        $scope.city = response.data.City;
+        $.each(statesCollection, function (i, item) {
+            if (item.id == response.data.State.toString()) $scope.state = item.name;
+        });
     });
 
     $scope.addProfile = function () {

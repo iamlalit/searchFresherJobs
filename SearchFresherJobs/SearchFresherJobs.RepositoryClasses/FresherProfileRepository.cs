@@ -52,11 +52,11 @@ namespace SearchFresherJobs.RepositoryClasses
                                       FresherId = f.FresherId,
                                       UserId = f.UserId,
                                       Gender = f.Gender,
-                                      MaritalStatus = f.MaritalStatus == null ? (byte)0 : f.MaritalStatus.Value,
+                                      MaritalStatus = f.MaritalStatus ?? 0,
                                       ProfileSummary = f.ProfileSummary,
-                                      FunctionalArea = fa.FresherFunctionalArea == null ? (long)0 : fa.FresherFunctionalArea.Value,
+                                      FunctionalArea = fa.FresherFunctionalArea ?? 0,
                                       Industry = fi.FresherPreferredIndustry,
-                                      PreferredLocation = fp.FresherPreferredLocation == null ? (long)0 : fp.FresherPreferredLocation.Value
+                                      PreferredLocation = fp.FresherPreferredLocation ?? 0
                                   }).ToList();
 
             return new FresherProfile
