@@ -10,6 +10,10 @@
     $scope.industryCollection = industryCollection;
     $scope.functionalAreaCollection = functionalAreaCollection;
     $scope.inEditMode = false;
+    $scope.preferredLocationValue = "";
+    $scope.industryValue = "";
+    $scope.functionalAreaValue = "";
+
 
     //Devnote: Replace the id= 1 here with actual id of member obtained from session
     $http.get(apiEndpointUrl + 'FresherProfileAPI/Get?id=3')
@@ -22,15 +26,25 @@
         $.each(maritalStatusCollection, function (i, item) {
             if (item.id == response.data.MaritalStatus.toString()) $scope.maritalStatusValue = item.name;
         });
-        $.each(preferredLocationCollection, function (i, item) {
-            if (item.id == response.data.PreferredLocationList.toString()) $scope.preferredLocation = item.name;
+
+        $.each(response.data.PreferredLocationList, function (i, storedItem) {
+            $.each(preferredLocationCollection, function (i, collectionItem) {
+                if (collectionItem.id == storedItem.toString()) $scope.preferredLocationValue = $scope.preferredLocationValue + collectionItem.name + ", ";
+            });
         });
-        $.each(industryCollection, function (i, item) {
-            if (item.id == response.data.IndustryList.toString()) $scope.industry = item.name;
+
+        $.each(response.data.IndustryList, function (i, storedItem) {
+            $.each(industryCollection, function (i, collectionItem) {
+                if (collectionItem.id == storedItem.toString()) $scope.industryValue = $scope.industryValue + collectionItem.name + ", ";
+            });
         });
-        $.each(functionalAreaCollection, function (i, item) {
-            if (item.id == response.data.FunctionalAreaList.toString()) $scope.functionalArea = item.name;
+
+        $.each(response.data.FunctionalAreaList, function (i, storedItem) {
+            $.each(functionalAreaCollection, function (i, collectionItem) {
+                if (collectionItem.id == storedItem.toString()) $scope.functionalAreaValue = $scope.functionalAreaValue + collectionItem.name + ", ";
+            });
         });
+
         $scope.address = response.data.Address;
         $scope.city = response.data.City;
         $.each(statesCollection, function (i, item) {
@@ -52,7 +66,7 @@
             State: $scope.state
         }
         $http.post(url, data).success(function () {
-
+            $scope.inEditMode = false;
         }).error(function (error) {
             console.log(error);
         });

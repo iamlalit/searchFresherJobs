@@ -72,9 +72,9 @@ namespace SearchFresherJobs.RepositoryClasses
                 MaritalStatus = fresherProfile[0].MaritalStatus,
                 UserId = fresherProfile[0].UserId,
                 ProfileSummary = fresherProfile[0].ProfileSummary,
-                FunctionalAreaList = fresherProfile.Select(f => f.FunctionalArea).ToList(),
-                IndustryList = fresherProfile.Select(f => f.Industry).ToList(),
-                PreferredLocationList = fresherProfile.Select(f => f.PreferredLocation).ToList()
+                FunctionalAreaList = fresherProfile.Select(f => f.FunctionalArea).Distinct().ToList(),
+                IndustryList = fresherProfile.Select(f => f.Industry).Distinct().ToList(),
+                PreferredLocationList = fresherProfile.Select(f => f.PreferredLocation).Distinct().ToList()
             };
         }
 

@@ -12,56 +12,63 @@
                        md-open-on-focus></md-datepicker>
     </div>
     Gender
-        <label ng-show="!inEditMode" ng-bind="genderValue"></label>
-        <select ng-show="inEditMode" ng-model="gender">
-            <option ng-repeat="option in genderCollection" value="{{option.id}}">{{option.name}}</option>
-        </select>
-    </div>
+    <label ng-show="!inEditMode" ng-bind="genderValue"></label>
+    <select ng-show="inEditMode" ng-model="gender">
+        <option ng-repeat="option in genderCollection" value="{{option.id}}">{{option.name}}</option>
+    </select>
+</div>
     Marital Status:
-    <div>
-        <label ng-show="!inEditMode" ng-bind="maritalStatusValue"></label>
-        <select ng-show="inEditMode" ng-model="maritalStatus">
-            <option ng-repeat="option in maritalStatusCollection" value="{{option.id}}">{{option.name}}</option>
-        </select>
-    </div>
+<div>
+    <label ng-show="!inEditMode" ng-bind="maritalStatusValue"></label>
+    <select ng-show="inEditMode" ng-model="maritalStatus">
+        <option ng-repeat="option in maritalStatusCollection" value="{{option.id}}">{{option.name}}</option>
+    </select>
+</div>
     Preferred Location:
-    <div>
-        <label ng-show="!inEditMode" ng-bind="preferredLocationValue"></label>
-        <select ng-show="inEditMode" ng-model="preferredLocation" multiple>
-            <option ng-repeat="option in preferredLocationCollection" value="{{option.id}}">{{option.name}} </option>
-        </select>
-    </div>
+<div>
+    <label ng-show="!inEditMode" ng-bind="preferredLocationValue"></label>
+    <select ng-show="inEditMode" ng-model="preferredLocation" multiple>
+        <option ng-repeat="option in preferredLocationCollection" value="{{option.id}}">{{option.name}} </option>
+    </select>
+</div>
     Industry:
-    <div>
-        <label ng-show="!inEditMode" ng-bind="industryValue"></label>
-        <select ng-show="inEditMode" ng-model="industry" multiple>
-            <option ng-repeat="option in industryCollection" value="{{option.id}}">{{option.name}} </option>
-        </select>
-    </div>
+<div>
+    <label ng-show="!inEditMode" ng-bind="industryValue"></label>
+    <select ng-show="inEditMode" ng-model="industry" multiple>
+        <option ng-repeat="option in industryCollection" value="{{option.id}}">{{option.name}} </option>
+    </select>
+</div>
     Functional Area:
-    <div>
-        <label ng-show="!inEditMode" ng-bind="functionalAreaValue"></label>
-        <select ng-show="inEditMode" ng-model="functionalArea" multiple>
-            <option ng-repeat="option in functionalAreaCollection" value="{{option.id}}">{{option.name}} </option>
-        </select>
-    </div>
+<div>
+    <label ng-show="!inEditMode" ng-bind="functionalAreaValue"></label>
+    <select ng-show="inEditMode" ng-model="functionalArea" multiple>
+        <option ng-repeat="option in functionalAreaCollection" value="{{option.id}}">{{option.name}} </option>
+    </select>
+</div>
     Address:
-    <div>
-        <label ng-show="!inEditMode" ng-bind="address"></label>
-        <input ng-show="inEditMode" ng-model="address" />
-    </div>City:
-    <div>
-        <label ng-show="!inEditMode" ng-bind="city"></label>
-        <input ng-show="inEditMode" ng-model="city" />
-    </div>State:
-    <div>
-        <label ng-show="!inEditMode" ng-bind="state"></label>
-        <select ng-show="inEditMode" ng-readonly="inEditMode" ng-model="state">
-            <option ng-repeat="option in statesCollection" value="{{option.id}}">{{option.name}}</option>
-        </select>
-    </div>
+<div>
+    <label ng-show="!inEditMode" ng-bind="address"></label>
+    <input ng-show="inEditMode" ng-model="address" />
+</div>City:
+<div>
+    <label ng-show="!inEditMode" ng-bind="city"></label>
+    <input ng-show="inEditMode" ng-model="city" />
+</div>State:
+<div>
+    <label ng-show="!inEditMode" ng-bind="state"></label>
+    <select ng-show="inEditMode" ng-readonly="inEditMode" ng-model="state">
+        <option ng-repeat="option in statesCollection" value="{{option.id}}">{{option.name}}</option>
+    </select>
+</div>
 
-    <div>
-        <button ng-click="addProfile()">Save</button>
-    </div>
+<div>
+    <button ng-click="addProfile()">Save</button>
+</div>
+<div>
+    <a href="javascript:0" ng-show="!inEditMode" ng-click="inEditMode=!inEditMode">Edit</a>
+</div>
+<div>
+    <a href="javascript:0" ng-show="inEditMode" ng-click="inEditMode=!inEditMode">Cancel</a>
+</div>
+
 </div>
