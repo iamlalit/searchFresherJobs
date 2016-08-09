@@ -22,5 +22,12 @@ namespace SearchFresherJobs.RepositoryInterfaces
         /// <param name="fresherProfile"></param>
         /// <returns></returns>
         bool Post(FresherProfile fresherProfile);
+
+        /// <summary>
+        /// Update the fresher profile data
+        /// </summary>
+        /// <param name="fresherProfile"></param>
+        /// <returns></returns>
+        bool Put(FresherProfile fresherProfile);
     }
 }

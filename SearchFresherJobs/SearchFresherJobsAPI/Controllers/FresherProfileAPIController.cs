@@ -71,5 +71,31 @@ namespace SearchFresherJobsAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Post fresher basic profile data 
+        /// </summary>
+        /// <param name="fresherProfile"></param>
+        [HttpPut]
+        public HttpResponseMessage Put(FresherProfile fresherProfile)
+        {
+            try
+            {
+                if (fresherProfile != null)
+                {
+                    var result = _FresherProfileRepository.Post(fresherProfile);
+                    if (result)
+                    {
+                        return this.Request.CreateResponse(HttpStatusCode.OK, true);
+                    }
+                }
+                return this.Request.CreateResponse(HttpStatusCode.BadRequest, false);
+            }
+            catch (Exception ex)
+            {
+                var x = ex.Message;
+                return this.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, new HttpError(ex.Message));
+            }
+        }
+
     }
 }

@@ -7,6 +7,7 @@ using SearchFresherJobs.DB.DomainClasses;
 using SearchFresherJobs.RepositoryInterfaces;
 using SearchFresherJobs.DB;
 using System.Data.Entity;
+using System.Transactions;
 
 namespace SearchFresherJobs.RepositoryClasses
 {
@@ -116,6 +117,75 @@ namespace SearchFresherJobs.RepositoryClasses
 
             _DbContext.Entry(tblFresherProfile).State = EntityState.Added;
             _DbContext.SaveChanges();
+
+            return true;
+        }
+
+        /// <summary>
+        /// Updates the fresher profile data
+        /// </summary>
+        /// <param name="fresherProfile"></param>
+        /// <returns></returns>
+        public bool Put(FresherProfile fresherProfile)
+        {
+            using (var scope = new TransactionScope())
+            {
+                try
+                {
+                    DateTime currDate = DateTime.UtcNow;
+
+                    tblFresher tblFresherProfile = _DbContext.Set<tblFresher>().FirstOrDefault(t => t.UserId == fresherProfile.UserId);
+                    tblFresherProfile.Address = fresherProfile.Address;
+                    tblFresherProfile.City = fresherProfile.City;
+                    tblFresherProfile.Counrty = fresherProfile.Country;
+                    tblFresherProfile.CreatedDate = currDate;
+                    tblFresherProfile.UpdatedDate = currDate;
+                    tblFresherProfile.DeleteStatus = false;
+                    tblFresherProfile.DOB = currDate;//DevNote:Insert the correct dob from the date ui control
+                    tblFresherProfile.FresherId = fresherProfile.FresherId;//DevNote:Take this out from session
+                    tblFresherProfile.Gender = fresherProfile.Gender;
+                    tblFresherProfile.MaritalStatus = fresherProfile.MaritalStatus;
+                    tblFresherProfile.ProfileSummary = fresherProfile.ProfileSummary;
+                    tblFresherProfile.State = fresherProfile.State;
+                    tblFresherProfile.UserId = fresherProfile.UserId;
+                    foreach (long item in fresherProfile.FunctionalAreaList)
+                    {
+                        tblFresherProfile.tblFresherFunctionalAreas.Add(new tblFresherFunctionalArea { FresherFunctionalArea = item, FresherProfileId = fresherProfile.FresherId });
+                    }
+                    foreach (long item in fresherProfile.PreferredLocationList)
+                    {
+                        tblFresherProfile.tblFresherPreferredLocations.Add(new tblFresherPreferredLocation { FresherPreferredLocation = item, FresherProfileId = fresherProfile.FresherId });
+                    }
+
+                    foreach (long item in fresherProfile.IndustryList)
+                    {
+                        tblFresherProfile.tblFresherPreferredIndustries.Add(new tblFresherPreferredIndustry { FresherPreferredIndustry = item, FresherProfileId = fresherProfile.FresherId });
+                    }
+
+                    _DbContext.Entry(tblFresherProfile).State = EntityState.Added;
+                    _DbContext.SaveChanges();
+
+                    var functionalAreaDelete = _DbContext.Set<tblFresherFunctionalArea>().Where(f => f.FresherProfileId == fresherProfile.FresherId);
+                    _DbContext.Entry(functionalAreaDelete).State = EntityState.Deleted;
+                    _DbContext.SaveChanges();
+
+                    var prefLocDelete = _DbContext.Set<tblFresherPreferredLocation>().Where(f => f.FresherProfileId == fresherProfile.FresherId);
+                    _DbContext.Entry(prefLocDelete).State = EntityState.Deleted;
+                    _DbContext.SaveChanges();
+
+                    var prefIndustryDelete = _DbContext.Set<tblFresherPreferredIndustry>().Where(f => f.FresherProfileId == fresherProfile.FresherId);
+                    _DbContext.Entry(functionalAreaDelete).State = EntityState.Deleted;
+                    _DbContext.SaveChanges();
+                    scope.Complete();
+                }
+                catch(Exception ex)
+                {
+
+                }
+                
+            }
+
+
 
             return true;
         }

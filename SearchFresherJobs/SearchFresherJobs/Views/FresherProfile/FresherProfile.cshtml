@@ -55,7 +55,7 @@
     <input ng-show="inEditMode" ng-model="city" />
 </div>State:
 <div>
-    <label ng-show="!inEditMode" ng-bind="state"></label>
+    <label ng-show="!inEditMode" ng-bind="stateValue"></label>
     <select ng-show="inEditMode" ng-readonly="inEditMode" ng-model="state">
         <option ng-repeat="option in statesCollection" value="{{option.id}}">{{option.name}}</option>
     </select>
@@ -65,10 +65,10 @@
     <button ng-click="addProfile()">Save</button>
 </div>
 <div>
-    <a href="javascript:0" ng-show="!inEditMode" ng-click="inEditMode=!inEditMode">Edit</a>
+    <a href="javascript:0" ng-show="!inEditMode" ng-click="editProfile()">Edit</a>
 </div>
 <div>
-    <a href="javascript:0" ng-show="inEditMode" ng-click="inEditMode=!inEditMode">Cancel</a>
+    <a href="javascript:0" ng-show="inEditMode" ng-click="cancelEditProfile()">Cancel</a>
 </div>
 
 </div>
