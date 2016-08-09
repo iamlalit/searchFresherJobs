@@ -62,13 +62,12 @@
 </div>
 
 <div>
-    <button ng-click="addProfile()">Save</button>
+    <button ng-click="addProfile()">Add New</button>
 </div>
 <div>
     <a href="javascript:0" ng-show="!inEditMode" ng-click="editProfile()">Edit</a>
 </div>
-<div>
+<span>
+    <a href="javascript:0" ng-show="inEditMode" ng-click="updateProfile()">Save</a>
     <a href="javascript:0" ng-show="inEditMode" ng-click="cancelEditProfile()">Cancel</a>
-</div>
-
-</div>
+</span>

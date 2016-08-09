@@ -24,6 +24,9 @@
     $http.get(apiEndpointUrl + 'FresherProfileAPI/Get?id=3')
     .then(function (response) {
         $scope.profileSummary = response.data.ProfileSummary;
+        $scope.preferredLocation = [];
+        $scope.functionalArea = [];
+        $scope.industry = [];
         $.each(genderCollection, function (i, item) {
             if (item.id == response.data.Gender.toString()) {
                 $scope.genderValue = item.name;
@@ -50,6 +53,7 @@
             $.each(industryCollection, function (i, collectionItem) {
                 if (collectionItem.id == storedItem.toString()) {
                     $scope.industryValue = $scope.industryValue + collectionItem.name + ", ";
+
                     $scope.industry.push(storedItem.toString());
                 };
             });
@@ -94,6 +98,28 @@
         });
     }
 
+    $scope.updateProfile = function () {
+        var url = apiEndpointUrl + 'FresherProfileAPI/Put';
+        var data = {
+            ProfileSummary: $scope.profileSummary,
+            Gender: $scope.gender,
+            MaritalStatus: $scope.maritalStatus,
+            PreferredLocationList: $scope.preferredLocation,
+            IndustryList: $scope.industry,
+            FunctionalAreaList: $scope.functionalArea,
+            Address: $scope.address,
+            City: $scope.city,
+            State: $scope.state
+        }
+        $http.put(url, data).success(function () {
+            $scope.inEditMode = false;
+            $scope.setDisplayData();
+        }).error(function (error) {
+            $scope.cancelEditProfile();
+            console.log(error);
+        });
+    }
+
     $scope.editProfile = function () {
         $scope.inEditMode = true;
         $scope.tempBasicProfileModel = {
@@ -121,6 +147,53 @@
         $scope.address = $scope.tempBasicProfileModel.Address;
         $scope.city = $scope.tempBasicProfileModel.City;
         $scope.state = $scope.tempBasicProfileModel.State;
+    }
+
+    $scope.setDisplayData = function () {
+        $scope.preferredLocationValue = "";
+        $scope.industryValue = "";
+        $scope.functionalAreaValue = "";
+
+        $.each(genderCollection, function (i, item) {
+            if (item.id == $scope.gender) {
+                $scope.genderValue = item.name;
+            }
+        });
+        $.each(maritalStatusCollection, function (i, item) {
+            if (item.id == $scope.maritalStatus) {
+                $scope.maritalStatusValue = item.name;
+            }
+        });
+
+        $.each($scope.preferredLocation, function (i, storedItem) {
+            $.each(preferredLocationCollection, function (i, collectionItem) {
+                if (collectionItem.id == storedItem) {
+                    $scope.preferredLocationValue = $scope.preferredLocationValue + collectionItem.name + ", ";
+                }
+            });
+        });
+
+        $.each($scope.industry, function (i, storedItem) {
+            $.each(industryCollection, function (i, collectionItem) {
+                if (collectionItem.id == storedItem) {
+                    $scope.industryValue = $scope.industryValue + collectionItem.name + ", ";
+                }
+            });
+        });
+
+        $.each($scope.functionalArea, function (i, storedItem) {
+            $.each(functionalAreaCollection, function (i, collectionItem) {
+                if (collectionItem.id == storedItem) {
+                    $scope.functionalAreaValue = $scope.functionalAreaValue + collectionItem.name + ", ";
+                }
+            });
+        });
+
+        $.each(statesCollection, function (i, item) {
+            if (item.id == $scope.state) {
+                $scope.stateValue = item.name;
+            }
+        });
     }
 
 }]);

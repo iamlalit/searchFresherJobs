@@ -82,7 +82,7 @@ namespace SearchFresherJobsAPI.Controllers
             {
                 if (fresherProfile != null)
                 {
-                    var result = _FresherProfileRepository.Post(fresherProfile);
+                    var result = _FresherProfileRepository.Put(fresherProfile);
                     if (result)
                     {
                         return this.Request.CreateResponse(HttpStatusCode.OK, true);

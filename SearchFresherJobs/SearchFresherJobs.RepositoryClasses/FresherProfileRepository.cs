@@ -135,6 +135,29 @@ namespace SearchFresherJobs.RepositoryClasses
                     DateTime currDate = DateTime.UtcNow;
 
                     tblFresher tblFresherProfile = _DbContext.Set<tblFresher>().FirstOrDefault(t => t.UserId == fresherProfile.UserId);
+
+
+                    var functionalAreaDelete = _DbContext.Set<tblFresherFunctionalArea>().Where(f => f.FresherProfileId == tblFresherProfile.FresherId);
+                    foreach (var item in functionalAreaDelete)
+                    {
+                        _DbContext.Entry(item).State = EntityState.Deleted;
+                    }
+                    _DbContext.SaveChanges();
+
+                    var prefLocDelete = _DbContext.Set<tblFresherPreferredLocation>().Where(f => f.FresherProfileId == tblFresherProfile.FresherId);
+                    foreach (var item in prefLocDelete)
+                    {
+                        _DbContext.Entry(item).State = EntityState.Deleted;
+                    }
+                    _DbContext.SaveChanges();
+
+                    var prefIndustryDelete = _DbContext.Set<tblFresherPreferredIndustry>().Where(f => f.FresherProfileId == tblFresherProfile.FresherId);
+                    foreach (var item in prefIndustryDelete)
+                    {
+                        _DbContext.Entry(item).State = EntityState.Deleted;
+                    }
+                    _DbContext.SaveChanges();
+
                     tblFresherProfile.Address = fresherProfile.Address;
                     tblFresherProfile.City = fresherProfile.City;
                     tblFresherProfile.Counrty = fresherProfile.Country;
@@ -142,7 +165,6 @@ namespace SearchFresherJobs.RepositoryClasses
                     tblFresherProfile.UpdatedDate = currDate;
                     tblFresherProfile.DeleteStatus = false;
                     tblFresherProfile.DOB = currDate;//DevNote:Insert the correct dob from the date ui control
-                    tblFresherProfile.FresherId = fresherProfile.FresherId;//DevNote:Take this out from session
                     tblFresherProfile.Gender = fresherProfile.Gender;
                     tblFresherProfile.MaritalStatus = fresherProfile.MaritalStatus;
                     tblFresherProfile.ProfileSummary = fresherProfile.ProfileSummary;
@@ -162,27 +184,16 @@ namespace SearchFresherJobs.RepositoryClasses
                         tblFresherProfile.tblFresherPreferredIndustries.Add(new tblFresherPreferredIndustry { FresherPreferredIndustry = item, FresherProfileId = fresherProfile.FresherId });
                     }
 
-                    _DbContext.Entry(tblFresherProfile).State = EntityState.Added;
+                    _DbContext.Entry(tblFresherProfile).State = EntityState.Modified;
                     _DbContext.SaveChanges();
 
-                    var functionalAreaDelete = _DbContext.Set<tblFresherFunctionalArea>().Where(f => f.FresherProfileId == fresherProfile.FresherId);
-                    _DbContext.Entry(functionalAreaDelete).State = EntityState.Deleted;
-                    _DbContext.SaveChanges();
-
-                    var prefLocDelete = _DbContext.Set<tblFresherPreferredLocation>().Where(f => f.FresherProfileId == fresherProfile.FresherId);
-                    _DbContext.Entry(prefLocDelete).State = EntityState.Deleted;
-                    _DbContext.SaveChanges();
-
-                    var prefIndustryDelete = _DbContext.Set<tblFresherPreferredIndustry>().Where(f => f.FresherProfileId == fresherProfile.FresherId);
-                    _DbContext.Entry(functionalAreaDelete).State = EntityState.Deleted;
-                    _DbContext.SaveChanges();
                     scope.Complete();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-
+                    throw ex;
                 }
-                
+
             }
 
 
