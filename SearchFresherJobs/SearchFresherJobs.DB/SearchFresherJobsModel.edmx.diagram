@@ -18,6 +18,10 @@
         <AssociationConnector Association="SearchFresherJobsModel.FK_FresherPreferredLocation_tblFresher" />
         <AssociationConnector Association="SearchFresherJobsModel.FK_tblFresherFunctionalArea_tblFresher" />
         <AssociationConnector Association="SearchFresherJobsModel.FK_tblFresherPreferredIndustry_tblFresher" />
+        <EntityTypeShape EntityType="SearchFresherJobsModel.tblDocumentType" Width="1.5" PointX="0.75" PointY="11.625" />
+        <EntityTypeShape EntityType="SearchFresherJobsModel.tblFresherDocument" Width="1.5" PointX="3" PointY="0.75" />
+        <AssociationConnector Association="SearchFresherJobsModel.FK_tblFresherDocument_tblDocumentType" />
+        <AssociationConnector Association="SearchFresherJobsModel.FK_tblFresherDocument_tblUser" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

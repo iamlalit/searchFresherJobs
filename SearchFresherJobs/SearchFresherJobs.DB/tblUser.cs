@@ -18,6 +18,7 @@ namespace SearchFresherJobs.DB
         public tblUser()
         {
             this.tblFreshers = new HashSet<tblFresher>();
+            this.tblFresherDocuments = new HashSet<tblFresherDocument>();
         }
     
         public long UserId { get; set; }
@@ -33,5 +34,7 @@ namespace SearchFresherJobs.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblFresher> tblFreshers { get; set; }
         public virtual tblOrganization tblOrganization { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblFresherDocument> tblFresherDocuments { get; set; }
     }
 }

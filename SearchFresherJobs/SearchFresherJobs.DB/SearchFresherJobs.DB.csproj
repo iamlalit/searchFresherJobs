@@ -70,7 +70,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SearchFresherJobsModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="tblDocumentType.cs">
+      <DependentUpon>SearchFresherJobsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblFresher.cs">
+      <DependentUpon>SearchFresherJobsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblFresherDocument.cs">
       <DependentUpon>SearchFresherJobsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFresherFunctionalArea.cs">
